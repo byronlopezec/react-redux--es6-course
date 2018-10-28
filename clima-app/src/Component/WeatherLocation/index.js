@@ -22,6 +22,7 @@ const data2 ={
     humidity: 40,
     wind: '30 [m/s]'
 }
+
 //Arrow Funcion
 class WeatherLocation extends Component {
     
