@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import './styles.css';
-import { SUN,RAIN } from '../../Constans/weathers';
-
+import { SUN } from '../../Constans/weathers';
+import convert from 'convert-units';
 const location ="Quito,ec";
 const api_key="f99bbd9e4959b513e9bd0d7f7356b38d";
 const url_base_weather = "http://api.openweathermap.org/data/2.5/weather";
@@ -15,12 +15,6 @@ const data ={
     weatherState: SUN,
     humidity: 60, 
     wind: '15 [m/s]'
-}
-const data2 ={
-    tempeture: 8,
-    weatherState: RAIN,
-    humidity: 40,
-    wind: '30 [m/s]'
 }
 
 //Arrow Funcion
@@ -37,6 +31,10 @@ class WeatherLocation extends Component {
         }
     }
 
+    getTemp = kelvin => {
+        return convert(kelvin).from("K").to("C");
+    }
+
     getWeatherState = weather_data =>{
         return SUN;
     }
@@ -45,11 +43,12 @@ class WeatherLocation extends Component {
 
         const {humidity,temp} = weather_data.main;
         const { speed } = weather_data.wind;
-        const weatherState = SUN;
+        const weatherState = this.getWeatherState(weather_data);
+        const tempeture = Number(this.getTemp(temp)).toFixed(2);//convertir grados Celcius
 
         const data = {
             humidity,
-            tempeture: temp,
+            tempeture,
             weatherState,
             wind: `${speed} [m/s]`
         }
