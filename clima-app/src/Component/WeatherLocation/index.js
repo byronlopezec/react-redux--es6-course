@@ -1,26 +1,22 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import './styles.css';
 import { SUN } from '../../Constans/weathers';
-import convert from 'convert-units';
-const location ="Quito,ec";
-const api_key="f99bbd9e4959b513e9bd0d7f7356b38d";
-const url_base_weather = "http://api.openweathermap.org/data/2.5/weather";
+import transformWeather from './../../Services/transformWeather';
+import { api_weather } from '../../Constans/api_urs'
 
-const api_weather= `${url_base_weather}?q=${location}&appid=${api_key}`;
-
-const data ={
+const data = {
     tempeture: 16,
     weatherState: SUN,
-    humidity: 60, 
+    humidity: 60,
     wind: '15 [m/s]'
 }
 
 //Arrow Funcion
 class WeatherLocation extends Component {
-    
-    constructor(){
+
+    constructor() {
         super();
         //Todo componente React tiene un estado
         //Se define el state en el constructor
@@ -29,87 +25,77 @@ class WeatherLocation extends Component {
             country: "Ecuador",
             data: data
         }
+        console.log("constructor");
     }
 
-    getTemp = kelvin => {
-        return convert(kelvin).from("K").to("C");
+    //se ejecuta despues del render()
+    componentDidMount() {
+        console.log("componentDidMount");
+        this.handleUpdateClick();
+
     }
 
-    getWeatherState = weather_data =>{
-        return SUN;
+    //se ejecuta despues de haber una actualizacion
+    componentDidUpdate(prevProps, prevState) {
+        console.log("componentDidUpdate");
+
     }
 
-     getData = weather_data => {
+    // componentWillMount() {
+    // console.log("UNSAFE componentWillMount");
+    //     this.handleUpdateClick();//Termina ejecutandose despues de componentDidMount
+    //     //No es recomendable usar Will, para React v17 se eliminara estos metodos.
 
-        const {humidity,temp} = weather_data.main;
-        const { speed } = weather_data.wind;
-        const weatherState = this.getWeatherState(weather_data);
-        const tempeture = Number(this.getTemp(temp)).toFixed(2);//convertir grados Celcius
+    // }
+    // componentWillUpdate() {
+    //     console.log("UNSAFE componentWillUpdate");
+    // }
 
-        const data = {
-            humidity,
-            tempeture,
-            weatherState,
-            wind: `${speed} [m/s]`
-        }
-        return data;
-    }
+    /*
+    
+    constructor
+index.js:42 UNSAFE componentWillMount
+index.js:67 render
+index.js:32 componentDidMount
+index.js:59 {humidity: 100, tempeture: 12.8, weatherState: "Rain", wind: "0.77 [m/s]"}
+index.js:47 UNSAFE componentWillUpdate
+index.js:67 render
+index.js:37 componentDidUpdate
 
-    //dentro de un componente es necesario usar THIS
+    */
+
     handleUpdateClick = () => {
-        //Lo siguiente da error
-        //Debido a que un state solamente se lo declara en el constructor
-        //pero se lo actualiza desde afuera con la funcion setState()
-        // this.state = {
-        // country: "Argentina",
-        // data : data2
-        // }
 
-        //Traemos datos del servidor con fetch
-        //Fetch es instruccion nativa para navegadores modernos
-        //Libreria Axios para navegadores antiguos
-
-        //lo que devuelve fetch es objeto promise
-        //con el primer then, nos devuelve una respuesta satisfactoria
+        //Traemos datos del servidor con fetch//lo que devuelve fetch es objeto promise
         //extraemos el json del resolve y se lo enviamos al siguiente .then como parametro
         //
-        fetch(api_weather).then ( resolve => {
+        fetch(api_weather).then(resolve => {
             return resolve.json();
-        }).then( data => {
-            const newWeather = this.getData(data);
+        }).then(data => {
+            const newWeather = transformWeather(data);
             console.log(newWeather);
-            debugger;
-            this.setState ( {
+            this.setState({
                 data: newWeather
             });
         });
-
-
-        // this.setState ( {
-        //     //Si un atributo no se modifico no es necesario pasarlo
-        //     //Si coutry se mantiene en Ecuador, solamente pasariamos
-        //     //data: data2 
-        //     country: "Argentina",
-        //     data: data2
-        //     }
-        // );
     }
 
-    render (){
+    render() {
+        console.log("render");
         //Uso de ES6 para facilitar notacion de "this.state.country"
-        const { country,data} = this.state;
+        const { country, data } = this.state;
         //Es igual a: count country = this.state.country
 
-    return (
-        //Acceder a las propiedades del state con "this.state"
-        //<Location country={this.state.country}/>
+        return (
+            //Acceder a las propiedades del state con "this.state"
+            //<Location country={this.state.country}/>
 
-        <div className="weatherLocationCont">
-            <Location country={country}/>
-            <WeatherData data={data}/>
-            <button onClick={this.handleUpdateClick}> Atualizar </button>
-        </div>
-    );
+            <div className="weatherLocationCont">
+                <Location country={country} />
+                <WeatherData data={data} />
+                <button onClick={this.handleUpdateClick}> Atualizar </button>
+            </div>
+        );
     }
 }
 // const WeatherLocation = () => {
