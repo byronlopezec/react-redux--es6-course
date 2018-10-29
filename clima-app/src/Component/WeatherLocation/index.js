@@ -2,16 +2,8 @@ import React, { Component } from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import './styles.css';
-import { SUN } from '../../Constans/weathers';
 import transformWeather from './../../Services/transformWeather';
 import { api_weather } from '../../Constans/api_urs'
-
-const data = {
-    tempeture: 16,
-    weatherState: SUN,
-    humidity: 60,
-    wind: '15 [m/s]'
-}
 
 //Arrow Funcion
 class WeatherLocation extends Component {
@@ -22,8 +14,8 @@ class WeatherLocation extends Component {
         //Se define el state en el constructor
         //PEROOO, se lo modifica desde afuera con setState()
         this.state = {
-            country: "Ecuador",
-            data: data
+            country: "Quito",
+            data: null
         }
         console.log("constructor");
     }
@@ -92,8 +84,7 @@ index.js:37 componentDidUpdate
 
             <div className="weatherLocationCont">
                 <Location country={country} />
-                <WeatherData data={data} />
-                <button onClick={this.handleUpdateClick}> Atualizar </button>
+                { data ? <WeatherData data={data} /> : "Cargando...."}
             </div>
         );
     }
