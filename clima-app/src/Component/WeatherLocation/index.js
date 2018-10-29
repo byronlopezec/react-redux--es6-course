@@ -4,7 +4,7 @@ import WeatherData from './WeatherData';
 import './styles.css';
 import transformWeather from './../../Services/transformWeather';
 import { api_weather } from '../../Constans/api_urs'
-
+import CircularProgress from '@material-ui/core/CircularProgress'
 //Arrow Funcion
 class WeatherLocation extends Component {
 
@@ -84,7 +84,7 @@ index.js:37 componentDidUpdate
 
             <div className="weatherLocationCont">
                 <Location country={country} />
-                { data ? <WeatherData data={data} /> : "Cargando...."}
+                { data ? <WeatherData data={data} /> : <CircularProgress/>}
             </div>
         );
     }
