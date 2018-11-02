@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import WeatherLocation from './Component/WeatherLocation';
+import LocationList from './Component/LocationList';
 
 // class App extends Component {
 //   render() {
@@ -13,11 +13,11 @@ import WeatherLocation from './Component/WeatherLocation';
 // }
 
 const App = () => {
-    return (
-      <div className="App">
-        <WeatherLocation country="Quito,ec"/>
-      </div>
-    );
+  return (
+    <div className="App">
+      <LocationList />
+    </div>
+  );
 }
 /*
 Componente clase vs Componente Funcion

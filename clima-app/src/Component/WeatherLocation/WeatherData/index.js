@@ -11,15 +11,6 @@ const WeatherData = ( { data: {tempeture, weatherState,humidity,wind} } ) => (
         <WeatherExtraInfo humidity={humidity} wind={wind}/>
     </div>
     );
-// const WeatherData = ({data}) => {
-//     const { tempeture, weatherState,humidity,wind} = data;
-//     return(
-//     <div className="weatherDataCont">
-//         <WeatherTemperature tempeture={tempeture} weatherState={weatherState}/>
-//         <WeatherExtraInfo humidity={humidity} wind={wind}/>
-//     </div>
-//     );
-// }
 
 WeatherData.propTypes = {
     data: PropTypes.shape({

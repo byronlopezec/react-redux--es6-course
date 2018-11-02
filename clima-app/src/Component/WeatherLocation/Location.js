@@ -2,12 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import './styles.css';
 
-// const Location = (props) => {
-//     //const city = props.city;
-//     const {city,country} = props; //destructuring
-
-//     return  (<div><h1>{city},{country}</h1></div>);
-// }
 
 const Location = ({country}) => (
     //const city = props.city;

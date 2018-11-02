@@ -14,9 +14,6 @@ class WeatherLocation extends Component {
         super(props);
 
         const { country } = props;
-        //Todo componente React tiene un estado
-        //Se define el state en el constructor
-        //PEROOO, se lo modifica desde afuera con setState()
         this.state = {
             country, //notacion ES6
             data: null
@@ -38,7 +35,7 @@ class WeatherLocation extends Component {
 
         //Traemos datos del servidor con fetch//lo que devuelve fetch es objeto promise
         //extraemos el json del resolve y se lo enviamos al siguiente .then como parametro
-
+        
         const api_weather = getUrlWeatherByCountry(this.state.country);
 
         fetch(api_weather).then(resolve => {
@@ -67,21 +64,7 @@ class WeatherLocation extends Component {
         );
     }
 }
-// const WeatherLocation = () => {
-//     return (
-//         <div className="weatherLocationCont">
-//             <Location country={'Ecuador'} city={'Quito'} />
-//             <WeatherData data={data}/>
-//         </div>
-//     );
-// }
 
-// const WeatherLocation = () => (
-//     <div>
-//         <Location country={'Ecuador'} city={'Quito'} />
-//         <WeatherData />
-//     </div>
-// );
 
 WeatherLocation.propTypes ={
     country: PropTypes.string.isRequired,
