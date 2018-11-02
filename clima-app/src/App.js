@@ -15,7 +15,7 @@ import WeatherLocation from './Component/WeatherLocation';
 const App = () => {
     return (
       <div className="App">
-        <WeatherLocation/>
+        <WeatherLocation country="Quito,ec"/>
       </div>
     );
 }
