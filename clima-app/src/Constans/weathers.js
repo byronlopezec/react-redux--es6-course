@@ -2,7 +2,7 @@ export const CLOUD = "cloud";
 export const SUN = "day-sunny";
 export const RAIN = "Rain";
 export const SNOW = "snow";
-export const THUNDER = "storm-showers";
+export const THUNDER = "day-thunderstorm";
 export const DRIZZLE = "sprinkle";
 
 
