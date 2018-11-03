@@ -12,7 +12,7 @@ import LocationList from './Component/LocationList';
 //   }
 // }
 
-const country = [
+const countries = [
   "Quito,ec",
   "Lima,pe",
   "Buenos Aires,ar",
@@ -23,7 +23,7 @@ const country = [
 const App = () => {
   return (
     <div className="App">
-      <LocationList country={country}/>
+      <LocationList countries={countries}/>
     </div>
   );
 }
