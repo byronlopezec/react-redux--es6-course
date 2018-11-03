@@ -12,10 +12,18 @@ import LocationList from './Component/LocationList';
 //   }
 // }
 
+const country = [
+  "Quito,ec",
+  "Lima,pe",
+  "Buenos Aires,ar",
+  "Bogota,co"
+]
+  
+
 const App = () => {
   return (
     <div className="App">
-      <LocationList />
+      <LocationList country={country}/>
     </div>
   );
 }
