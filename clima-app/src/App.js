@@ -4,6 +4,7 @@ import './App.css';
 import LocationList from './Component/LocationList';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
 import ForecastExtended from './Component/ForecastExtended'
+
 const countries = [
   "Quito,ec",
   "Lima,pe",
@@ -12,12 +13,20 @@ const countries = [
 ]
 
 class App extends Component {
+  constructor(){
+    super();//antes de usar cualquier this, esto llama al constructor de component he inicializa state.
+    this.state = {
+      city: 'Nueva Ciudad'
+    };
+  }
 
   handleSelectedLocation = (country) => {
-    console.log("Estoy App.js handleSelectedLocation: " + country);
+    this.setState({city: country});
+    console.log("Estoy App.js handleSelectedLocation: " + this.state.city);
   }
 
   render() {
+    const { city } = this.state;
     return (
       <Grid>
         <Row>
@@ -34,7 +43,7 @@ class App extends Component {
           <Col xs={12} md={6} >
             <Paper elevation={6}>
               <div className="details">
-                <ForecastExtended city={"Quito,ec"}></ForecastExtended>
+                <ForecastExtended city={city}></ForecastExtended>
               </div>
             </Paper>
           </Col>
