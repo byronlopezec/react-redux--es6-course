@@ -2,10 +2,13 @@
 import React from 'react';
 import WeatherLocation from './WeatherLocation'
 
-const listaWeatherLocation = countries => (
-    //A cada country que devuelve Pasale a weatherLocation
-    countries.map(country => <WeatherLocation country={country} />)
-);
+const listaWeatherLocation = countries => {
+    return (
+        //A cada country que devuelve Pasale a weatherLocation
+        //cada componente weatherLocation necesita un index unico que lo identifique
+        countries.map((country,index) => <WeatherLocation key={index++} country={country} />)
+    );
+}
 
 // {countries}, significa que paso un arreglo
 const LocationList = ({ countries }) => (
