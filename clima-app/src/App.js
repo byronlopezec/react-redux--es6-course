@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LocationList from './Component/LocationList';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
-
+import ForecastExtended from './Component/ForecastExtended'
 const countries = [
   "Quito,ec",
   "Lima,pe",
@@ -32,9 +32,11 @@ class App extends Component {
             <LocationList countries={countries} onSelectedLocation={this.handleSelectedLocation} />
           </Col>
           <Col xs={12} md={6} >
-          <Paper elevation={6}>
-            <div className="details"> </div>
-          </Paper>
+            <Paper elevation={6}>
+              <div className="details">
+                <ForecastExtended city={"Quito,ec"}></ForecastExtended>
+              </div>
+            </Paper>
           </Col>
         </Row>
       </Grid>
