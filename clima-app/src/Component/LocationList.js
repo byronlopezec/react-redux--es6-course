@@ -2,7 +2,7 @@
 import React from 'react';
 import WeatherLocation from './WeatherLocation'
 import { PropTypes } from 'prop-types'
-
+import './styles.css'
 
 
 // {countries}, significa que paso un arreglo
@@ -26,7 +26,7 @@ const LocationList = ({ countries, onSelectedLocation }) => {
     }
 
     return (
-        <div>
+        <div className='locationList'>
             {listaWeatherLocation(countries)}
         </div>
     );
