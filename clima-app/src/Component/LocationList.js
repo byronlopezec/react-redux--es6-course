@@ -1,23 +1,40 @@
 //funcion statelesss, sin estado
 import React from 'react';
 import WeatherLocation from './WeatherLocation'
+import { PropTypes } from 'prop-types'
 
-const listaWeatherLocation = countries => {
+
+
+// {countries}, significa que paso un arreglo
+const LocationList = ({ countries, onSelectedLocation }) => {
+
+    const handleWeatherLocationClick = country => {
+        console.log("handleWeatherLocationClick");
+        onSelectedLocation(country);
+    }
+
+    const listaWeatherLocation = countries => {
+        return (
+            countries.map(
+                (country) => <WeatherLocation
+                    key={country}
+                    country={country}
+                    onWeatherLocationClick={() => handleWeatherLocationClick(country)}
+                />
+            )
+        );
+    }
+
     return (
-        //A cada country que devuelve Pasale a weatherLocation
-        //cada componente weatherLocation necesita un index unico que lo identifique
-        // countries.map((country,index) => <WeatherLocation key={index++} country={country} />)
-        //La solucion mas optima para que no renderize cada elemento
-        countries.map((country) => <WeatherLocation key={country} country={country} />)
+        <div>
+            {listaWeatherLocation(countries)}
+        </div>
     );
 }
 
-// {countries}, significa que paso un arreglo
-const LocationList = ({ countries }) => (
-    <div>
-        {listaWeatherLocation(countries)}
-    </div>
-);
-
+LocationList.propTypes = {
+    countries: PropTypes.array.isRequired,
+    onSelectedLocation: PropTypes.func.isRequired,
+}
 
 export default LocationList;

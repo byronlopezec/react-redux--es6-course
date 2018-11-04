@@ -1,32 +1,48 @@
-import React from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import React, { Component } from 'react';
 import './App.css';
-import LocationList from './Component/LocationList';
+//import LocationList from './Component/LocationList';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <WeatherLocation/>
-//       </div>
-//     );
-//   }
-// }
+// const countries = [
+//   "Quito,ec",
+//   "Lima,pe",
+//   "Buenos Aires,ar",
+//   "Bogota,co"
+// ]
 
-const countries = [
-  "Quito,ec",
-  "Lima,pe",
-  "Buenos Aires,ar",
-  "Bogota,co"
-]
-  
+class App extends Component {
 
-const App = () => {
-  return (
-    <div className="App">
-      <LocationList countries={countries}/>
-    </div>
-  );
+  render() {
+    return (
+      <Grid fluid>
+        <Row>
+          <Col xs={12} sm={6} md={4} >
+            <div className="red"> </div>
+          </Col>
+          <Col xs={12} sm={6} md={4} >
+            <div className="blue"> </div>
+          </Col>
+          <Col xs={12} sm={6} md={4} >
+            <div className="green"></div>
+          </Col>
+        </Row>
+      </Grid>
+    );
+  }
+
+  // handleSelectedLocation = (country) => {
+  //   console.log("Estoy App.js handleSelectedLocation: " + country);
+  // }
+  // render() {
+  //   return (
+  //     <div className="App">
+  //       <LocationList countries={countries} onSelectedLocation={this.handleSelectedLocation} />
+  //     </div>
+  //   );
+  // }
+
 }
+
 /*
 Componente clase vs Componente Funcion
 Usamos Componente class cuando:
