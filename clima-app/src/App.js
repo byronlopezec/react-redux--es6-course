@@ -32,7 +32,9 @@ class App extends Component {
             <LocationList countries={countries} onSelectedLocation={this.handleSelectedLocation} />
           </Col>
           <Col xs={12} md={6} >
+          <Paper elevation={6}>
             <div className="details"> </div>
+          </Paper>
           </Col>
         </Row>
       </Grid>

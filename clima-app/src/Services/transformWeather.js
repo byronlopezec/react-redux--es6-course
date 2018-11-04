@@ -22,7 +22,7 @@ const transformWeather = weather_data => {
     const { humidity, temp } = weather_data.main;
     const { speed } = weather_data.wind;
     const weatherState = getWeatherState( weather_data.weather[0]);
-    const tempeture = Number(getTemp(temp).toFixed(2));//convertir grados Celcius
+    const tempeture = Number(getTemp(temp).toFixed(0));//convertir grados Celcius
 
     const data = {
         humidity,

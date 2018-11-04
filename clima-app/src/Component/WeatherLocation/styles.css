@@ -4,13 +4,25 @@
     text-align: left;
     color: #888;
     line-height: 35px;
+    /*Altero los scrollball*/
+    overflow: hidden;
 }
+
 .locationCont h1 {
-    margin: o;
+    margin: 0;
+    /* no se quiebre el titulo */
+    white-space: nowrap;
 }
+
 .weatherLocationCont {
-    width: 400px;
+    /* nueva propiedad que permite calcular un tamanio de ancho */
+    width: calc(100%-20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    /* al reducirse el tamanio no se rompa */
+    min-width: 350px;
+    box-sizing: border-box;
     padding: 25px;
-    font-family: 'Roboto',sans-serif;
-    box-shadow: 10px 10px 40px -12px rgba(0, 0 , 0, 0.75);
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
 }
