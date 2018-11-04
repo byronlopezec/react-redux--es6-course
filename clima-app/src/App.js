@@ -16,13 +16,13 @@ class App extends Component {
     return (
       <Grid fluid>
         <Row>
-          <Col xs={12} sm={6} md={4} >
+          <Col xs >
             <div className="red"> </div>
           </Col>
-          <Col xs={12} sm={6} md={4} >
+          <Col xs >
             <div className="blue"> </div>
           </Col>
-          <Col xs={12} sm={6} md={4} >
+          <Col xs >
             <div className="green"></div>
           </Col>
         </Row>
