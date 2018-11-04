@@ -1,0 +1,14 @@
+.locationList {
+    background: red;
+}
+
+/* Media Query establer diferentes estilos de acuerdo al size de la tamanio */
+/* Cuando llegue a 64 de medida imprima lo que hay en media */
+@media (max-width: 64em) {
+    .locationList {
+        background: green;
+        max-height: 30vh;
+        overflow: auto;
+        margin-bottom: 20px;
+    }
+}
