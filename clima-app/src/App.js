@@ -2,6 +2,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import React, { Component } from 'react';
 import './App.css';
 import LocationList from './Component/LocationList';
+import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
 
 const countries = [
   "Quito,ec",
@@ -19,22 +20,19 @@ class App extends Component {
   render() {
     return (
       <Grid>
-
-        <Row center="xs">
-          <h1>
-            WEATHER APP
-        </h1>
+        <Row>
+          <AppBar position='sticky'>
+            <Toolbar>
+              <Typography variant='title' color='inherit'> Weather App </Typography>
+            </Toolbar>
+          </AppBar>
         </Row>
         <Row>
           <Col xs={12} md={6} >
-            <div className="App">
-              <LocationList countries={countries} onSelectedLocation={this.handleSelectedLocation} />
-            </div>
+            <LocationList countries={countries} onSelectedLocation={this.handleSelectedLocation} />
           </Col>
           <Col xs={12} md={6} >
-            <div className="details">
-
-            </div>
+            <div className="details"> </div>
           </Col>
         </Row>
       </Grid>
