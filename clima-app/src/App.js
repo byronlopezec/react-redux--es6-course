@@ -45,11 +45,16 @@ class App extends Component {
               <div className="details">
                 {/* city !== null ? similarA: !city */}
               {
-                city ? 
+                city && 
                 <ForecastExtended city={city}></ForecastExtended>
-                :
-                <h1> Ciudad no seleccionada!</h1>
               }
+                {/* 
+                si pongo: city && me renderiza a menos que city sea null
+                si city es null no me renderiza...
+                :null //el null no me renderiza nada es mas eficiente.
+                <h1> Ciudad no seleccionada!</h1> 
+                */}
+
               </div>
             </Paper>
           </Col>

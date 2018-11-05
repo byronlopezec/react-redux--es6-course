@@ -3,7 +3,9 @@
 }
 
 /* Media Query establer diferentes estilos de acuerdo al size de la tamanio */
+
 /* Cuando llegue a 64 de medida imprima lo que hay en media */
+
 @media (max-width: 64em) {
     .locationList {
         background: green;
@@ -11,4 +13,11 @@
         overflow: auto;
         margin-bottom: 20px;
     }
+}
+
+.forecast-title {
+    color: white;
+    text-align: center;
+    padding: 15px;
+    padding-bottom: 15px;
 }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class ForecastExtended extends Component {
     render() {
         const city = this.props.city;
-        return (<div>Prognóstico extendido {city}</div>);
+        return (<div className='forecast-title'>Prognóstico extendido {city}</div>);
     }
 }
 
