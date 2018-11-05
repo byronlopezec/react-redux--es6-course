@@ -16,7 +16,7 @@ class App extends Component {
   constructor(){
     super();//antes de usar cualquier this, esto llama al constructor de component he inicializa state.
     this.state = {
-      city: 'Nueva Ciudad'
+      city: null
     };
   }
 
@@ -43,7 +43,13 @@ class App extends Component {
           <Col xs={12} md={6} >
             <Paper elevation={6}>
               <div className="details">
+                {/* city !== null ? similarA: !city */}
+              {
+                city ? 
                 <ForecastExtended city={city}></ForecastExtended>
+                :
+                <h1> Ciudad no seleccionada!</h1>
+              }
               </div>
             </Paper>
           </Col>
