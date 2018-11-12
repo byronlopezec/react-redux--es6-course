@@ -1,0 +1,29 @@
+Donde hacemos el Fetch?
+    -Seleccionamos la ciudad
+    -ForecastExtended
+        Constructor (state inicial)
+        // se hara un renderizado inicial con el estado inicial
+        Render (1er) // Entonces podemos poner un indicador de progreso.
+        ComponentDidMount
+            //hacer Fetch y esperamos la promise
+            Fetch === (promise)
+            === setState(Result)//con el resultado hacemos el setstate...y luego se hace un 2do renderizado
+        Render (2do) //Finalmente haremos un renderizado completo
+            ForecastItem (n) Render
+                WeatherData render
+                    masComponentes...
+-------------------------------------
+¿Donde hacer el Fetch?
+- Seleccionamos la ciudad
+- ForecastExtended
+    - Ejecuta Constructor
+    - ComponentWillMount
+        //El Fetch genera una promise
+        //La promise no es resuelta sino hasta que llega al servidor 
+        // inebitablemente es resuelta despues del 1er render
+    Render1
+        - Viene el resultado <div> /<div> , se hace luego 
+        - Un setState(Resultado) esto obliga hacer un 2do renderizado...
+    Render2
+
+    //No estamos evitando un rende inicial.
