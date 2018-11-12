@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import transformForecast from './../Services/transformForecast';
 //import ForecastItem from './ForecastItem/ForecastItem';
 
 // const days = [
@@ -33,13 +34,17 @@ class ForecastExtended extends Component {
 
         //Realizamos un http metodo Get usando fetch que devuelve un promise
         fetch(url_forecast).then(
-            data => (
-                data.json()//Obtiene el objeto Json que devuelve el sergit vicio
-            )
+            data => {
+                (
+                    data.json()//Obtiene el objeto Json que devuelve el servicio
+                );
+                // console.log(data);
+            }
         ).then(
             weather_data => {
                 //Uso un 2do then para usar los datos antes devueltos
-                console.log(weather_data);
+                const forecastData = transformForecast(weather_data);
+                this.setState({ forecastData: forecastData });
             }
         )
 
