@@ -29,22 +29,19 @@ class ForecastExtended extends Component {
     }
     componentDidMount() {
         //axios para navegadores antiguos, fetch para actuales
-        //la siguiente url permite extraer datos del servicio weathermap
+        //la siguiente url permite extraer datos del servicio openweathermap
         const url_forecast = `${url}?q=${this.props.city}&appid=${api_key}`;
 
         //Realizamos un http metodo Get usando fetch que devuelve un promise
         fetch(url_forecast).then(
-            data => {
-                (
-                    data.json()//Obtiene el objeto Json que devuelve el servicio
-                );
-                // console.log(data);
-            }
+            data => data.json()//Obtiene el objeto Json que devuelve el servicio
         ).then(
             weather_data => {
                 //Uso un 2do then para usar los datos antes devueltos
+                console.log(weather_data);
                 const forecastData = transformForecast(weather_data);
-                this.setState({ forecastData: forecastData });
+                console.log(forecastData);
+                this.setState({ forecastData });
             }
         )
 
@@ -53,8 +50,7 @@ class ForecastExtended extends Component {
     renderForecastItemDays() {
 
         return (
-            // days.map(day => <ForecastItem key={day} weekDay={day} hour={10} data={data}/>)
-            <div>Items</div>
+            <h1>Items</h1>
         );
     }
 
