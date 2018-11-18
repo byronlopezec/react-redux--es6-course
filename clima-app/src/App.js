@@ -16,6 +16,7 @@ const countries = [
 // Para usar la extension Redux Devtools Extension en chrome se usa:
 // window.__REDUX_DEVTOOLS_EXTENSION && window.__REDUX_DEVTOOLS_EXTENSION()
 const store = createStore( () => {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const actionCreator = (value) => ( {type: 'setCity', value} )
 
 class App extends Component {
   constructor() {
@@ -28,8 +29,9 @@ class App extends Component {
   handleSelectedLocation = (city) => {
     this.setState({ city: city });
     console.log(`handleSelectedLocation ${city}`)
-    const action = { type: 'setCity', value: city }
-    store.dispatch(action);
+
+    //envez de enviar directamente una action, se envia un actionCreator que devuelve 
+    store.dispatch(actionCreator(city));
   }
 
   render() {
