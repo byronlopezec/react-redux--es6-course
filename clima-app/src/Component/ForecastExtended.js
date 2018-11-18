@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import transformForecast from './../Services/transformForecast';
-//import ForecastItem from './ForecastItem/ForecastItem';
+import ForecastItem from './ForecastItem/ForecastItem';
 
 // const days = [
 //     'Lunes',
@@ -47,10 +47,18 @@ class ForecastExtended extends Component {
 
     }
 
-    renderForecastItemDays() {
-
-        return (
-            <h1>Items</h1>
+    renderForecastItemDays(forecastData) {
+        return forecastData.map((forecast) => {
+            return (
+                <ForecastItem
+                    key={`${forecast.weekDay}${forecast.hour}`}
+                    weekDay={forecast.weekDay}
+                    hour={forecast.hour}
+                    data={forecast.data}
+                >
+                </ForecastItem>
+            );
+        }
         );
     }
 
@@ -66,9 +74,8 @@ class ForecastExtended extends Component {
         return (
             <div>
                 <h2 className='forecast-title'>Prognóstico extendido {city}</h2>
-                {/* {this.renderForecastItemDays(days)} */}
                 {/* si no obtenemos datos lazamos un grafico de cargando pronostico  */}
-                {forecastData == null ? this.renderProgress() : this.renderForecastItemDays()}
+                {forecastData == null ? this.renderProgress() : this.renderForecastItemDays(forecastData)}
             </div>
         );
     }
