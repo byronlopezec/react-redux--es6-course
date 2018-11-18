@@ -5,6 +5,7 @@ import LocationList from './Component/LocationList';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
 import ForecastExtended from './Component/ForecastExtended'
 import { createStore } from 'redux';
+import {actionCreator} from './Actions'
 
 const countries = [
   "Quito,ec",
@@ -16,7 +17,6 @@ const countries = [
 // Para usar la extension Redux Devtools Extension en chrome se usa:
 // window.__REDUX_DEVTOOLS_EXTENSION && window.__REDUX_DEVTOOLS_EXTENSION()
 const store = createStore( () => {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-const actionCreator = (value) => ( {type: 'setCity', value} )
 
 class App extends Component {
   constructor() {
