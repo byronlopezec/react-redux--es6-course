@@ -13,7 +13,7 @@ const countries = [
 ]
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();//antes de usar cualquier this, esto llama al constructor de component he inicializa state.
     this.state = {
       city: null
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   handleSelectedLocation = (country) => {
-    this.setState({city: country});
+    this.setState({ city: country });
     console.log("Estoy App.js handleSelectedLocation: " + this.state.city);
   }
 
@@ -44,10 +44,13 @@ class App extends Component {
             <Paper elevation={6}>
               <div className="details">
                 {/* city !== null ? similarA: !city */}
-              {
-                city && 
-                <ForecastExtended city={city}></ForecastExtended>
-              }
+                {
+                  city ? <ForecastExtended city={city}></ForecastExtended> :
+                    <div>
+                      <h2 className="initTitleDetail" align="center">Prognóstico Extendido </h2>
+                      <h3 className="initTitleDetail" align="center"> Click on City </h3>
+                    </div>
+                }
                 {/* 
                 si pongo: city && me renderiza a menos que city sea null
                 si city es null no me renderiza...

@@ -1,8 +1,16 @@
 .locationList {
-    background-color: darkcyan;
+    /* background-color: darkcyan; */
     overflow: auto;
     margin-bottom: 10px;
     height: 120vh;
+    background: rgba(20, 166, 173, 1);
+    background: -moz-linear-gradient(left, rgba(20, 166, 173, 1) 0%, rgba(17, 133, 146, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(20, 166, 173, 1)), color-stop(100%, rgba(17, 133, 146, 1)));
+    background: -webkit-linear-gradient(left, rgba(20, 166, 173, 1) 0%, rgba(17, 133, 146, 1) 100%);
+    background: -o-linear-gradient(left, rgba(20, 166, 173, 1) 0%, rgba(17, 133, 146, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(20, 166, 173, 1) 0%, rgba(17, 133, 146, 1) 100%);
+    background: linear-gradient(to right, rgba(20, 166, 173, 1) 0%, rgba(17, 133, 146, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14a6ad', endColorstr='#118592', GradientType=1);
 }
 
 /* Media Query establer diferentes estilos de acuerdo al size de la tamanio */
