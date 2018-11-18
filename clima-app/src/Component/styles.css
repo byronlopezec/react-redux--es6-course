@@ -7,7 +7,7 @@
 
 /* Media Query establer diferentes estilos de acuerdo al size de la tamanio */
 
-/* Cuando llegue a 64 de medida imprima lo que hay en media */
+/* Cuando llegue a 48 de medida imprima lo que hay en media */
 
 @media (max-width: 48em) {
     .locationList {

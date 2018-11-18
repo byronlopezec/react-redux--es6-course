@@ -27,10 +27,30 @@ class ForecastExtended extends Component {
         super();
         this.state = { forecastData: null };//informacion que devuelve el servicio
     }
+
+    //Se ejecuta una única vez despues del 1er render. 
     componentDidMount() {
+        this.updateCity(this.props.city)
+    }
+
+    //Se ejecuta cada vez que hay algun cambio en las propiedades
+    //Nos pasa como parametros las propiedades que estan previos a establecerse
+    //Todavia no se establecen esta propiedades, estan en un punto en el cual
+    //es previo al establecimiento de las propiedades y previo a la actualizacion del componente.
+    // SE EJECUTA SIEMPRE QUE SE MODIFICA LAS PROPIEDADES ESCEPTO LA 1ERA VEZ QUE SE ESTABLECE EL COMPONENTE.
+    
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.city !== this.props.city) {
+            this.setState({ forecastData: null })//llamaria al indicador de progreso...
+            this.updateCity(nextProps.city)
+        }
+
+    }
+
+    updateCity = city => {
         //axios para navegadores antiguos, fetch para actuales
         //la siguiente url permite extraer datos del servicio openweathermap
-        const url_forecast = `${url}?q=${this.props.city}&appid=${api_key}`;
+        const url_forecast = `${url}?q=${city}&appid=${api_key}`;
 
         //Realizamos un http metodo Get usando fetch que devuelve un promise
         fetch(url_forecast).then(
@@ -38,13 +58,10 @@ class ForecastExtended extends Component {
         ).then(
             weather_data => {
                 //Uso un 2do then para usar los datos antes devueltos
-                console.log(weather_data);
                 const forecastData = transformForecast(weather_data);
-                console.log(forecastData);
                 this.setState({ forecastData });
             }
         )
-
     }
 
     renderForecastItemDays(forecastData) {
