@@ -1,23 +1,26 @@
 .locationList {
-    background: red;
+    background-color: darkcyan;
+    overflow: auto;
+    margin-bottom: 10px;
+    height: 120vh;
 }
 
 /* Media Query establer diferentes estilos de acuerdo al size de la tamanio */
 
 /* Cuando llegue a 64 de medida imprima lo que hay en media */
 
-@media (max-width: 64em) {
+@media (max-width: 48em) {
     .locationList {
-        background: green;
-        max-height: 30vh;
+        background-color: cornflowerblue;
+        max-height: 60vh;
         overflow: auto;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 }
 
 .forecast-title {
-    color: white;
+    color: crimson;
     text-align: center;
-    padding: 15px;
-    padding-bottom: 15px;
+    padding: 0px;
+    padding-bottom: 0px;
 }
