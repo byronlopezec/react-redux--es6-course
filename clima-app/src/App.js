@@ -4,6 +4,7 @@ import './App.css';
 import LocationList from './Component/LocationList';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
 import ForecastExtended from './Component/ForecastExtended'
+import { createStore } from 'redux';
 
 const countries = [
   "Quito,ec",
@@ -11,6 +12,10 @@ const countries = [
   "Buenos Aires,ar",
   "Bogota,co"
 ]
+
+// Para usar la extension Redux Devtools Extension en chrome se usa:
+// window.__REDUX_DEVTOOLS_EXTENSION && window.__REDUX_DEVTOOLS_EXTENSION()
+const store = createStore( () => {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class App extends Component {
   constructor() {
@@ -20,9 +25,11 @@ class App extends Component {
     };
   }
 
-  handleSelectedLocation = (country) => {
-    this.setState({ city: country });
-    console.log("Estoy App.js handleSelectedLocation: " + this.state.city);
+  handleSelectedLocation = (city) => {
+    this.setState({ city: city });
+    console.log(`handleSelectedLocation ${city}`)
+    const action = { type: 'setCity', value: city }
+    store.dispatch(action);
   }
 
   render() {
@@ -51,13 +58,6 @@ class App extends Component {
                       <h3 className="initTitleDetail" align="center"> Click on City </h3>
                     </div>
                 }
-                {/* 
-                si pongo: city && me renderiza a menos que city sea null
-                si city es null no me renderiza...
-                :null //el null no me renderiza nada es mas eficiente.
-                <h1> Ciudad no seleccionada!</h1> 
-                */}
-
               </div>
             </Paper>
           </Col>
