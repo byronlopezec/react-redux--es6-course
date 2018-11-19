@@ -1,0 +1,25 @@
+/ https://codepen.io/anon/pen/vQexwB?editors=0012
+const dispatch = {}
+const connect = (v1,v2) => {
+  console.log(v1)
+  console.log(v2)
+  
+  //retorna una funcion ()=>{''}
+  return (componente) => {
+    const result = `${componente}-${mapStateToProps(dispatch)*mapDispatchToProps(dispatch)}`;
+    console.log(result);
+    return result;
+  }
+}
+const mapStateToProps = (dispatch) => 4
+const mapDispatchToProps = (dispatch) => 5
+
+const componenteConectado = connect(mapStateToProps,mapDispatchToProps)('App');
+
+componenteConectado;
+
+//***************** Print ************************
+// function mapStateToProps(dispatch) {return 4;}
+
+// function mapDispatchToProps(dispatch) {return 5;}
+// "App-20"

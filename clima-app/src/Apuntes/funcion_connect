@@ -10,7 +10,7 @@ const connect = (v1,v2) => {
     return result;
   }
 }
-
+//Sin funciones!!!!
 const componenteConectado = connect(4,5)('App');
 
 componenteConectado;
@@ -19,3 +19,7 @@ componenteConectado;
 4
 5
 "App-20"
+
+
+
+
