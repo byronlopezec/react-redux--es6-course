@@ -1,0 +1,18 @@
+Exite dos tipos de componentes:
+los Smart componentes
+y los Dumps componentes
+
+tambien llamados:
+Smart Componentes -> Containers Componentes
+Dumps Componentes -> Presentationals Componentes
+
+Los containers componentes:
+son aquellos que llevan el connect y tienen acceso al estado de la aplicacion
+Por ejemplo el componente weatherData no seria ideal para ser containers,
+por que esta por debajo del arbol DOM...
+Pero el componente WeatherList ForecastExtended siip porque estan mas cerca del arbol DOM...
+
+y los Presentationals no llevan el connect
+
+
+Tratar de terner menor cantidad de containers...
