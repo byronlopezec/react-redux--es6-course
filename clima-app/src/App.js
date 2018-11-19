@@ -1,11 +1,11 @@
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import LocationList from './Component/LocationList';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
-import ForecastExtended from './Component/ForecastExtended'
-import { actionCreator } from './Actions'
-import { store } from './Store'
+import ForecastExtended from './Component/ForecastExtended';
+import { setCityActionCreator } from './Actions';
 
 const countries = [
   "Quito,ec",
@@ -27,7 +27,7 @@ class App extends Component {
     console.log(`handleSelectedLocation ${city}`)
 
     //en vez de enviar directamente una action, se envia un actionCreator que devuelve 
-    store.dispatch(actionCreator(city));
+    this.props.setCity(city);
   }
 
   render() {
@@ -65,9 +65,25 @@ class App extends Component {
   }
 
 }
-
 /*
 Componente clase vs Componente Funcion
 Usamos Componente class cuando:
 Cuando necesitamos usar una de las instancias de ciclo de vida de REACT*/
-export default App;
+
+
+//Recibe un dispatch que a su vez retorna un objeto 
+//El objeto tendra las funciones que vamos a invocar para crear las acciones
+const mapDispatchToPropsActions = (dispatch) => {
+  return ({
+    //esta funcion recibe un parametro, invocamos un dispatch y recibe un action creator
+    setCity: value => dispatch(setCityActionCreator(value))
+  });
+ }
+//Connect es una funcion que espera dos funciones
+// y asu vez devuelve otra funcion que espera le pasen un componente!!!
+// Ahora el componente que vamos a exportar no es el App solamente
+//export default App;
+// Va a ser el componente con la habilidad de conectarse con el store
+const Appconnected = connect(null, mapDispatchToPropsActions)(App);
+// Eliminamos //export default App; y exportamos el nuevo componente...
+export default Appconnected;

@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
+import { store } from './Store';
 
 // Proveer el store a los componentes que vivan en la aplicacion
+//Provider espera una propiedad llamada store
 ReactDOM.render(
-    <Provider>
+    <Provider store={store}>
         <App />
     </Provider>, document.getElementById('root'));
 
