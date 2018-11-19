@@ -6,6 +6,7 @@ import LocationList from './Component/LocationList';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
 import ForecastExtended from './Component/ForecastExtended';
 import { setCityActionCreator } from './Actions';
+import PropTypes from 'prop-types';
 
 const countries = [
   "Quito,ec",
@@ -65,6 +66,11 @@ class App extends Component {
   }
 
 }
+// Validaciones para que nuestro componente sea consistente:
+App.propTypes = {
+  setCity: PropTypes.func.isRequired,
+}
+
 /*
 Componente clase vs Componente Funcion
 Usamos Componente class cuando:
@@ -84,6 +90,8 @@ const mapDispatchToPropsActions = (dispatch) => {
 // Ahora el componente que vamos a exportar no es el App solamente
 //export default App;
 // Va a ser el componente con la habilidad de conectarse con el store
-const Appconnected = connect(null, mapDispatchToPropsActions)(App);
+// const Appconnected = connect(null, mapDispatchToPropsActions)(App);
 // Eliminamos //export default App; y exportamos el nuevo componente...
-export default Appconnected;
+// export default Appconnected;
+// Podemos simplificar aun mas una vez ya entendido el concepto
+export default connect(null, mapDispatchToPropsActions)(App);
