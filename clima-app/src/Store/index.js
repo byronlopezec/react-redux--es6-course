@@ -1,4 +1,7 @@
-import { createStore } from 'redux';
+//applyMiddleware para implementar middleware
+// compose para usar DEVTOOLS EXTENSION
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import { city } from '../Reducers/city';
 
 const initialState = {
