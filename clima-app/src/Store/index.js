@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 import { city } from '../Reducers/city';
 
 const initialState = {
-    city: 'Quito,ec'
+    city: null
 };
 
 // Para usar la extension Redux Devtools Extension en chrome se usa:

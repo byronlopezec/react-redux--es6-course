@@ -15,7 +15,10 @@ class LocationListContainer extends Component {
     render() {
         return (
             <div>
-                <LocationList countries={this.props.countries} onSelectedLocation={this.handleSelectedLocation} />
+                <LocationList
+                    countries={this.props.countries}
+                    onSelectedLocation={this.handleSelectedLocation}
+                />
             </div>
         );
     }

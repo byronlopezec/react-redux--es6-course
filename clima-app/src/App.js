@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
-import ForecastExtended from './Component/ForecastExtended';
 import LocationListContainer from './Containers/LocationListContainer';
+import ForecastExtendedContainer from './Containers/ForecastExtendedContainer';
 
 const countries = [
   "Quito,ec",
@@ -15,14 +15,8 @@ const countries = [
 
 class App extends Component {
 
-  constructor() {
-    super();//antes de usar cualquier this, esto llama al constructor de component he inicializa state.
-    this.state = {
-      city: null
-    };
-  }
+
   render() {
-    const { city } = this.state;
     return (
       <Grid>
         <Row>
@@ -39,14 +33,7 @@ class App extends Component {
           <Col xs={12} md={6} >
             <Paper elevation={6}>
               <div className="details">
-                {/* city !== null ? similarA: !city */}
-                {
-                  city ? <ForecastExtended city={city}></ForecastExtended> :
-                    <div>
-                      <h2 className="initTitleDetail" align="center">Prognóstico Extendido </h2>
-                      <h3 className="initTitleDetail" align="center"> Click on City </h3>
-                    </div>
-                }
+                <ForecastExtendedContainer />
               </div>
             </Paper>
           </Col>
