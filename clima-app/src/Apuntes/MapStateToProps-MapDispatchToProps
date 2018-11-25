@@ -1,0 +1,22 @@
+connect(1,2)(Comp)
+
+1: mapStateToProps(values)
+Inyecta values como propiedades del componente
+//------------------------------
+Nos llega como parametro el State unico y global de la Applicacion
+retornamos un objeto con las propiedades que vamos a utilizar, 
+esas propiedades se va a mapear a propiedades del componente
+esas propiedades connect las inyecta en el componente como "props"
+accedemos a esas propiedades con this.props.
+
+
+2: MapDispatchTOProps(func)
+Inyecta funciones como propiedades del componente
+//-----------------------------------
+
+espera que retornemos un objeto con funciones,
+esas funciones van a estar llamando al dispatch que vienen como parametro
+esta ofreciendo el dispatch como parametro para que lo podamos usar dentro de esas funciones
+
+Retornamos un objeto con funciones que connect las va inyectar como propiedades
+dentro del componente. 
