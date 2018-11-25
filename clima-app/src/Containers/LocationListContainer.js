@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LocationList from '../Component/LocationList';
 import { connect } from 'react-redux';
-import { setCityActionCreator } from './../Actions';
+import { setSelectedCity } from './../Actions';
 
 class LocationListContainer extends Component {
 
@@ -40,7 +40,7 @@ Cuando necesitamos usar una de las instancias de ciclo de vida de REACT*/
 const mapDispatchToPropsActions = (dispatch) => {
     return ({
         //esta funcion recibe un parametro, invocamos un dispatch y recibe un action creator
-        setCity: value => dispatch(setCityActionCreator(value))
+        setCity: value => dispatch(setSelectedCity(value))
     });
 }
 //Connect es una funcion que espera dos funciones

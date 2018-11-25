@@ -1,3 +1,4 @@
+//Retorna un objeto
 const actionNormal  = payload => ({type: 'myAction', payload})
 
 //Action para mi dispatch
@@ -18,6 +19,8 @@ const myDispatch = texto => {
 
 const action = actionNormal("fetching");
 
+// EL middleware Thunk simplemente analiza si "action" es una funcion
+// si no es una funcion el middleware thunk no hace nada.
 if(typeof action === 'function'){
   console.log("action delay");
   action(myDispatch);

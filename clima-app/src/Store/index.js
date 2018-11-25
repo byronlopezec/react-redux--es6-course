@@ -8,7 +8,8 @@ const initialState = {
     city: null
 };
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 // Para usar la extension Redux Devtools Extension en chrome se usa:
 // window.__REDUX_DEVTOOLS_EXTENSION && window.__REDUX_DEVTOOLS_EXTENSION()
-export const store = createStore(city, initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export const store = createStore(city, initialState, composeEnhancers(applyMiddleware(thunk)));
