@@ -14,8 +14,6 @@ const countries = [
 ]
 
 class App extends Component {
-
-
   render() {
     return (
       <Grid>
@@ -41,7 +39,6 @@ class App extends Component {
       </Grid>
     );
   }
-
 }
 
 export default App;

@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import Reducers from '../Reducers';
 
 const initialState = {
-    city: null
+    city: ''
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
