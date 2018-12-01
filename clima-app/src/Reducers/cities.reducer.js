@@ -12,3 +12,9 @@ export const reducer = (state = {}, action) => {
     }
 
 }
+
+// EL state esta referiendoce al el state manejado por este reducer
+export const getForecastDataFromCities = (state, city) => {
+    // console.log("state: "+JSON.stringify(state) + " city: "+city)
+    return (state[city] && state[city].forecastData)
+}
