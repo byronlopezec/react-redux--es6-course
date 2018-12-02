@@ -7,7 +7,6 @@ import { setSelectedCity } from './../Actions';
 class LocationListContainer extends Component {
 
     handleSelectedLocation = (city) => {
-        console.log(`handleSelectedLocation ${city}`)
         //en vez de enviar directamente una action, se envia un actionCreator que devuelve 
         this.props.setCity(city);
     }

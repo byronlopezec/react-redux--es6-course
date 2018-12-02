@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ForecastExtended from '../Component/ForecastExtended';
 import { connect } from 'react-redux';
-import { getForecastDataFromCities } from '../Reducers/cities.reducer';
+import { getForecastDataFromCities, getCity } from '../Reducers';
 
 class ForecastExtendedContainer extends Component {
     render() {
-        console.log("render() + ForecastExtendend Container")
         const { city, forecastData } = this.props;
 
         return (
@@ -37,7 +36,7 @@ ForecastExtendedContainer.propTypes = {
 //El state que paso como parametro es el state global y unico de la aplicacion.
 const mapStateToProps = state => {
     // console.log("[mapStateToProps(state)]: "+JSON.stringify(state))
-    return ({ city: state.city, forecastData: getForecastDataFromCities(state.cityList,state.city) });
+    return ({ city: getCity(state), forecastData: getForecastDataFromCities(state) });
 }
 
 export default connect(mapStateToProps, null)(ForecastExtendedContainer);
