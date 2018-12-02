@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 import { SET_FORECAST_DATA } from "../Actions";
 
 export const reducer = (state = {}, action) => {
@@ -14,7 +16,11 @@ export const reducer = (state = {}, action) => {
 }
 
 // EL state esta referiendoce al el state manejado por este reducer
-export const getForecastDataFromCities = (state, city) => {
-    // console.log("state: "+JSON.stringify(state) + " city: "+city)
-    return (state[city] && state[city].forecastData)
-}
+// export const getForecastDataFromCities = (state, city) => {
+//     // console.log("state: "+JSON.stringify(state) + " city: "+city)
+//     return (state[city] && state[city].forecastData)
+// }
+
+//Usando Reselect!!!1=======
+export const getForecastDataFromCities = createSelector(
+    (state, city) => (state[city] && state[city].forecastData), forecastData => forecastData)
