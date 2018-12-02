@@ -1,4 +1,7 @@
 import transformForecast from './../Services/transformForecast';
+import getUrlWeatherByCountry from './../Services/getUrlWeatherByCountry';
+import transformWeather from './../Services/transformWeather';
+
 export const SET_CITY = 'SET_CITY';
 export const SET_FORECAST_DATA = 'SET_FORECAST_DATA';
 
@@ -33,3 +36,21 @@ export const setSelectedCity = value => {
         );
     };
 };
+
+
+export const setWeather = cityList => {
+
+    //Traemos datos del servidor con fetch//lo que devuelve fetch es objeto promise
+    //extraemos el json del resolve y se lo enviamos al siguiente .then como parametro
+
+    const api_weather = getUrlWeatherByCountry(cityList);
+
+    fetch(api_weather).then(resolve => {
+        return resolve.json();
+
+    }).then(data => {
+
+        const newWeather = transformWeather(data);
+        return { data: newWeather }
+    });
+}

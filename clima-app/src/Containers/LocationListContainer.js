@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LocationList from '../Component/LocationList';
 import { connect } from 'react-redux';
-import { setSelectedCity } from './../Actions';
+import { setSelectedCity, setWeather } from './../Actions';
 
 class LocationListContainer extends Component {
+
+    componentDidMount() {
+        this.props.setWeather(this.props.countries)
+    }
 
     handleSelectedLocation = (city) => {
         //en vez de enviar directamente una action, se envia un actionCreator que devuelve 
@@ -39,7 +43,8 @@ Cuando necesitamos usar una de las instancias de ciclo de vida de REACT*/
 const mapDispatchToPropsActions = (dispatch) => {
     return ({
         //esta funcion recibe un parametro, invocamos un dispatch y recibe un action creator
-        setCity: value => dispatch(setSelectedCity(value))
+        setCity: value => dispatch(setSelectedCity(value)),
+        setWeather: cityList => dispatch(setWeather(cityList))
     });
 }
 //Connect es una funcion que espera dos funciones

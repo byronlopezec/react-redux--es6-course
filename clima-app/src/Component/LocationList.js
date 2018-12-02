@@ -7,9 +7,8 @@ import './styles.css'
 
 // {countries}, significa que paso un arreglo
 const LocationList = ({ countries, onSelectedLocation }) => {
-
+    
     const handleWeatherLocationClick = country => {
-        console.log("handleWeatherLocationClick");
         onSelectedLocation(country);
     }
 
@@ -17,9 +16,10 @@ const LocationList = ({ countries, onSelectedLocation }) => {
         return (
             countries.map(
                 (country) => <WeatherLocation
-                    key={country}
-                    country={country}
-                    onWeatherLocationClick={() => handleWeatherLocationClick(country)}
+                    key={country.key}
+                    country={country.name}
+                    onWeatherLocationClick={() => handleWeatherLocationClick(country.name)}
+                    data={country.data}
                 />
             )
         );
