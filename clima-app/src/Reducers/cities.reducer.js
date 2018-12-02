@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
-
-import { SET_FORECAST_DATA } from "../Actions";
+import toPairs from 'lodash.topairs';
+import { SET_FORECAST_DATA, GET_WEATHER_DATA, SET_WEATHER_DATA } from "../Actions";
 
 export const reducer = (state = {}, action) => {
     switch (action.type) {
@@ -8,6 +8,14 @@ export const reducer = (state = {}, action) => {
             const { city, forecastData } = action.value;
             //Genero mi diccionadrio de cities
             return { ...state, [city]: { forecastData } }
+        }
+        case GET_WEATHER_DATA: {
+            const city = action.value;
+            return { ...state, [city]: { weather: null } }
+        }
+        case SET_WEATHER_DATA: {
+            const { city, weather } = action.value;
+            return { ...state, [city]: { weather } }
         }
         default:
             return state;
@@ -24,3 +32,10 @@ export const reducer = (state = {}, action) => {
 //Usando Reselect!!!1=======
 export const getForecastDataFromCities = createSelector(
     (state, city) => (state[city] && state[city].forecastData), forecastData => forecastData)
+
+const fromObjToArray = cityList => {
+    console.log(JSON.stringify(toPairs(cityList)))
+    return (toPairs(cityList).map(([key, value]) => ({ key, name: key, data: value.weather })))
+}
+
+export const getWeatherCityList = createSelector(state => fromObjToArray(state), cityList => cityList)

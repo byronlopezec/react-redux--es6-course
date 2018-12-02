@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import LocationList from '../Component/LocationList';
 import { connect } from 'react-redux';
 import { setSelectedCity, setWeather } from './../Actions';
+import { getWeatherCityList } from './../Reducers'
 
 class LocationListContainer extends Component {
 
@@ -19,7 +20,7 @@ class LocationListContainer extends Component {
         return (
             <div>
                 <LocationList
-                    countries={this.props.countries}
+                    countries={this.props.cityListWeather}
                     onSelectedLocation={this.handleSelectedLocation}
                 />
             </div>
@@ -29,6 +30,7 @@ class LocationListContainer extends Component {
 
 LocationListContainer.propTypes = {
     countries: PropTypes.array.isRequired,
+    cityListWeather: PropTypes.array.isRequired,
     setCity: PropTypes.func.isRequired,
 };
 
@@ -56,5 +58,8 @@ const mapDispatchToPropsActions = (dispatch) => {
 // Eliminamos //export default App; y exportamos el nuevo componente...
 // export default Appconnected;
 // Podemos simplificar aun mas una vez ya entendido el concepto
-export default connect(null, mapDispatchToPropsActions)(LocationListContainer);
 
+const mapStateToProps = state => ({
+    cityListWeather: getWeatherCityList(state)
+})
+export default connect(mapStateToProps, mapDispatchToPropsActions)(LocationListContainer);

@@ -4,10 +4,14 @@ import transformWeather from './../Services/transformWeather';
 
 export const SET_CITY = 'SET_CITY';
 export const SET_FORECAST_DATA = 'SET_FORECAST_DATA';
+export const GET_WEATHER_DATA = 'GET_WEATHER_DATA';//Obtener datos del clima del servidor
+export const SET_WEATHER_DATA = 'SET_WEATHER_DATA'; //enviar esos datos obtenidos al State Global de la App.
 
 //Lo usamos en el interior y en su lugar llamaremos a setSelectedCity
 const setCityActionCreator = (value) => ({ type: SET_CITY, value })
 const setForecastDataActionCreator = (value) => ({ type: SET_FORECAST_DATA, value })
+const getWeatherCityActionCreator = (value) => ({ type: GET_WEATHER_DATA, value })
+const setWeatherCityActionCreator = (value) => ({ type: SET_WEATHER_DATA, value })
 
 const api_key = "f99bbd9e4959b513e9bd0d7f7356b38d";
 const url = "http://api.openweathermap.org/data/2.5/forecast";
@@ -40,17 +44,20 @@ export const setSelectedCity = value => {
 
 export const setWeather = cityList => {
 
-    //Traemos datos del servidor con fetch//lo que devuelve fetch es objeto promise
-    //extraemos el json del resolve y se lo enviamos al siguiente .then como parametro
+    return dispatch => {
 
-    const api_weather = getUrlWeatherByCountry(cityList);
+        cityList.forEach(city => {
 
-    fetch(api_weather).then(resolve => {
-        return resolve.json();
+            dispatch(getWeatherCityActionCreator(city));
 
-    }).then(data => {
-
-        const newWeather = transformWeather(data);
-        return { data: newWeather }
-    });
-}
+            const api_weather = getUrlWeatherByCountry(city);
+            fetch(api_weather).then(resolve => {
+                return resolve.json();
+            }).then(weather_data => {
+                const weather = transformWeather(weather_data);
+                dispatch(setWeatherCityActionCreator({ city, weather }))
+            })
+        }
+        );
+    }
+} 
