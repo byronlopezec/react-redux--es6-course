@@ -1,0 +1,61 @@
+const cityList = {
+  'Quito,ec': {
+    weather: {
+      humidity: 59,
+      tempeture: 18,
+      weatherState: 'cloud',
+      wind: '5.1 [m/s]'
+    }
+  },
+  'Lima,pe': {
+    weather: {
+      humidity: 64,
+      tempeture: 23,
+      weatherState: 'day-sunny',
+      wind: '5.7 [m/s]'
+    }
+  },
+  'Buenos Aires,ar': {
+    weather: {
+      humidity: 100,
+      tempeture: 18,
+      weatherState: 'cloud',
+      wind: '2.6 [m/s]'
+    }
+  },
+  'Bogota,co': {
+    weather: {
+      humidity: 63,
+      tempeture: 17,
+      weatherState: 'cloud',
+      wind: '4.6 [m/s]'
+    }
+  }
+}
+
+
+const r = _.toPairs(cityList).map(([key, value]) => ({ key, name: key, data: value.weather }))
+console.log(r)
+
+/////Print!!!!!!!
+const object = [
+  {
+    data: {
+      humidity: 100,
+      tempeture: 18,
+      weatherState: "cloud",
+      wind: "2.6 [m/s]"
+    },
+    key: "Buenos Aires,ar",
+    name: "Buenos Aires,ar"
+  }, {
+    data: {
+      humidity: 63,
+      tempeture: 17,
+      weatherState: "cloud",
+      wind: "4.6 [m/s]"
+    },
+    key: "Bogota,co",
+    name: "Bogota,co"
+  }
+]
