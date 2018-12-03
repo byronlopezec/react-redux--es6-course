@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LocationList from '../Component/LocationList';
 import { connect } from 'react-redux';
-// import { setSelectedCity, setWeather } from './../Actions';
+import { setSelectedCity, setWeather } from './../Actions';
 // Lo anterior se puede cambiar
-import * as actions from './../Actions';
+// import * as actions from './../Actions';
+// import { bindActionCreators } from 'redux';
 import { getWeatherCityList } from './../Reducers'
-import { bindActionCreators } from 'redux';
 
 class LocationListContainer extends Component {
 
@@ -36,7 +36,7 @@ class LocationListContainer extends Component {
 LocationListContainer.propTypes = {
     countries: PropTypes.array.isRequired,
     cityListWeather: PropTypes.array.isRequired,
-    setCity: PropTypes.func.isRequired,
+    setSelectedCity: PropTypes.func.isRequired,
 };
 LocationListContainer.defaultProps = {
     city: 'Quito,ec'
@@ -51,15 +51,15 @@ Cuando necesitamos usar una de las instancias de ciclo de vida de REACT*/
 //Recibe un dispatch que a su vez retorna un objeto 
 //El objeto tendra las funciones que vamos a invocar para crear las acciones
 //================= bindActionCreators!!!!!!
-const mapDispatchToPropsActions = dispatch => bindActionCreators(actions, dispatch)
+// const mapDispatchToPropsActions = dispatch => bindActionCreators(actions, dispatch)
 
-// const mapDispatchToPropsActions = (dispatch) => {
-//     return ({
-//         //esta funcion recibe un parametro, invocamos un dispatch y recibe un action creator
-//         setSelectedCity: value => dispatch(setSelectedCity(value)),
-//         setWeather: cityList => dispatch(setWeather(cityList))
-//     });
-// }
+const mapDispatchToPropsActions = (dispatch) => {
+    return ({
+        //esta funcion recibe un parametro, invocamos un dispatch y recibe un action creator
+        setSelectedCity: value => dispatch(setSelectedCity(value)),
+        setWeather: cityList => dispatch(setWeather(cityList))
+    });
+}
 
 //Connect es una funcion que espera dos funciones
 // y asu vez devuelve otra funcion que espera le pasen un componente!!!
