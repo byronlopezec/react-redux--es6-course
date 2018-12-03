@@ -34,7 +34,6 @@ export const getForecastDataFromCities = createSelector(
     (state, city) => (state[city] && state[city].forecastData), forecastData => forecastData)
 
 const fromObjToArray = cityList => {
-    console.log(JSON.stringify(toPairs(cityList)))
     return (toPairs(cityList).map(([key, value]) => ({ key, name: key, data: value.weather })))
 }
 

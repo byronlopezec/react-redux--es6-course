@@ -8,7 +8,9 @@ import { getWeatherCityList } from './../Reducers'
 class LocationListContainer extends Component {
 
     componentDidMount() {
-        this.props.setWeather(this.props.countries)
+        const { setCity, city ,setWeather,countries} = this.props;
+        setWeather(countries)
+        setCity(city)
     }
 
     handleSelectedLocation = (city) => {
@@ -33,6 +35,9 @@ LocationListContainer.propTypes = {
     cityListWeather: PropTypes.array.isRequired,
     setCity: PropTypes.func.isRequired,
 };
+LocationListContainer.defaultProps = {
+    city: 'Quito,ec'
+}
 
 /*
 Componente clase vs Componente Funcion
