@@ -7,7 +7,7 @@ export const reducer = (state = {}, action) => {
         case SET_FORECAST_DATA: {
             const { city, forecastData } = action.value;
             //Genero mi diccionadrio de cities
-            return { ...state, [city]: { ...state[city], forecastData } }
+            return { ...state, [city]: { ...state[city], forecastData, forecastDataDate: new Date() } }
         }
         case GET_WEATHER_DATA: {
             const city = action.value;

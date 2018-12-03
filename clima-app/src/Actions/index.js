@@ -20,12 +20,24 @@ const url = "http://api.openweathermap.org/data/2.5/forecast";
 // el forecast extendido de dicha ciudad seleccionada
 export const setSelectedCity = value => {
 
-    return dispatch => {
+    //El getState es una funcion que optiene el estado global de la aplicacion
+    return (dispatch,getState) => {
         const url_forecast = `${url}?q=${value}&appid=${api_key}`;
 
         //esta funcion establecera la ciudad actual de forma sincrona y a la vez
         //activar en el estado  un indicador de busqueda de datos
         dispatch(setCityActionCreator(value))
+
+        const state = getState();
+        const date = state.cityList && state.cityList[value].forecastDataDate;
+        const now = new Date();
+
+        //Verificar que no sea nulo 
+        //Si hace menos de un minuto se solicito el pronostico extendido no volver hacer el fetch
+        //La diferencia viene en milisegundos
+        if (date && (now - date ) < 1 * 60 * 1000 ){
+            return;
+        }
 
         return fetch(url_forecast).then(
             data => data.json()//Obtiene el objeto Json que devuelve el servicio
@@ -49,6 +61,7 @@ export const setWeather = cityList => {
         cityList.forEach(city => {
 
             dispatch(getWeatherCityActionCreator(city));
+            //Obtimizar consumo de datos y mejorar velocidad de aplicacion
 
             const api_weather = getUrlWeatherByCountry(city);
             fetch(api_weather).then(resolve => {
