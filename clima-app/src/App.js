@@ -8,9 +8,10 @@ import ForecastExtendedContainer from './Containers/ForecastExtendedContainer';
 
 const countries = [
   "Quito,ec",
+  "Bogota,co",
   "Lima,pe",
   "Buenos Aires,ar",
-  "Bogota,co"
+  "La Paz,bo"
 ]
 
 class App extends Component {

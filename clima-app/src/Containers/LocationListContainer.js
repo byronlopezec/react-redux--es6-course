@@ -2,20 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LocationList from '../Component/LocationList';
 import { connect } from 'react-redux';
-import { setSelectedCity, setWeather } from './../Actions';
+// import { setSelectedCity, setWeather } from './../Actions';
+// Lo anterior se puede cambiar
+import * as actions from './../Actions';
 import { getWeatherCityList } from './../Reducers'
+import { bindActionCreators } from 'redux';
 
 class LocationListContainer extends Component {
 
     componentDidMount() {
-        const { setCity, city ,setWeather,countries} = this.props;
+        const { setSelectedCity, setWeather, city, countries } = this.props;
         setWeather(countries)
-        setCity(city)
+        setSelectedCity(city)
     }
 
     handleSelectedLocation = (city) => {
         //en vez de enviar directamente una action, se envia un actionCreator que devuelve 
-        this.props.setCity(city);
+        this.props.setSelectedCity(city);
     }
 
     render() {
@@ -47,13 +50,17 @@ Cuando necesitamos usar una de las instancias de ciclo de vida de REACT*/
 
 //Recibe un dispatch que a su vez retorna un objeto 
 //El objeto tendra las funciones que vamos a invocar para crear las acciones
-const mapDispatchToPropsActions = (dispatch) => {
-    return ({
-        //esta funcion recibe un parametro, invocamos un dispatch y recibe un action creator
-        setCity: value => dispatch(setSelectedCity(value)),
-        setWeather: cityList => dispatch(setWeather(cityList))
-    });
-}
+//================= bindActionCreators!!!!!!
+const mapDispatchToPropsActions = dispatch => bindActionCreators(actions, dispatch)
+
+// const mapDispatchToPropsActions = (dispatch) => {
+//     return ({
+//         //esta funcion recibe un parametro, invocamos un dispatch y recibe un action creator
+//         setSelectedCity: value => dispatch(setSelectedCity(value)),
+//         setWeather: cityList => dispatch(setWeather(cityList))
+//     });
+// }
+
 //Connect es una funcion que espera dos funciones
 // y asu vez devuelve otra funcion que espera le pasen un componente!!!
 // Ahora el componente que vamos a exportar no es el App solamente
