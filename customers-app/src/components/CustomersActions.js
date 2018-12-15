@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+//react-router-dom contiene a react-router
+//la nueva version react-router-dom es utilizada tambien para react native
 const CustomersActions = ({ children }) => {
 	return (
 		<div>
