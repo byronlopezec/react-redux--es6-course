@@ -1,18 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import AppHeader from './AppHeader';
 
-const AppHeader = props => {
+const AppFrame = ({ header, body }) => {
 	return (
 		<div>
-			<div class="app-reader">
-				<h1>{props.title}</h1>
+			<div className="app-frame">
+				<AppHeader title={header}></AppHeader>
+				<div>{body}</div>
+				<div>Aplicación Simple de ejemplo!</div>
 			</div>
 		</div>
 	);
 };
 
-AppHeader.propTypes = {
-	title: PropTypes.string.isRequired
+AppFrame.propTypes = {
+	title: PropTypes.string.isRequired,
+	header: PropTypes.string.isRequired,
+	footer: PropTypes.string.isRequired,
+	body: PropTypes.element.isRequired,
 };
 
-export default AppHeader;
+export default AppFrame;
