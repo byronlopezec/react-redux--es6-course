@@ -5,8 +5,8 @@ import AppHeader from './AppHeader';
 const AppFrame = ({ header, body }) => {
 	return (
 		<div>
-			<div className="app-frame">
-				<AppHeader title={header}></AppHeader>
+			<div className='app-frame'>
+				<AppHeader title={header} />
 				<div>{body}</div>
 				<div>Aplicación Simple de ejemplo!</div>
 			</div>
@@ -15,10 +15,9 @@ const AppFrame = ({ header, body }) => {
 };
 
 AppFrame.propTypes = {
-	title: PropTypes.string.isRequired,
 	header: PropTypes.string.isRequired,
 	footer: PropTypes.string.isRequired,
-	body: PropTypes.element.isRequired,
+	body: PropTypes.element.isRequired
 };
 
 export default AppFrame;

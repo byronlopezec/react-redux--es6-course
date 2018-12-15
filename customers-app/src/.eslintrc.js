@@ -4,21 +4,21 @@ module.exports = {
 		commonjs: false,
 		es6: true
 	},
-	extends: "eslint:recommended",
+	extends: 'eslint:recommended',
 	parserOptions: {
 		ecmaFeatures: {
 			jsx: true
 		},
 		ecmaVersion: 2018,
-		sourceType: "module"
+		sourceType: 'module'
 	},
-	plugins: ["react"],
+	plugins: ['react', 'prettier'],
 	rules: {
-		"react/jsx-uses-react": "error",
-		"react/jsx-uses-vars": "error",
-		indent: ["error", "tab"],
-		"linebreak-style": ["error", "windows"],
-		quotes: ["warn", "single"],
-		semi: ["error", "always"]
+		'react/jsx-uses-react': 'error',
+		'react/jsx-uses-vars': 'error',
+		indent: ['error', 'tab'],
+		'linebreak-style': ['error', 'windows'],
+		quotes: ['warn', 'single'],
+		semi: ['error', 'always']
 	}
 };

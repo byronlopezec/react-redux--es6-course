@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const AppHeader = props => {
 	return (
 		<div>
-			<div class="app-header">
+			<div class='app-header'>
 				<h1>{props.title}</h1>
 			</div>
 		</div>
