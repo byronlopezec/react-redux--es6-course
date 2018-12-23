@@ -1,18 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const CustomerListItem = ({ name, editAction, delAction, urlPath, dni }) => {
 	return (
 		<div>
-			<div className='customer-list-item'>
-				<div className='field'>
+			<div className="customer-list-item">
+				<div className="field">
 					<Link to={`${urlPath}${dni}`}>{name}</Link>
 				</div>
-				<div className='field'>
+				<div className="field">
 					<Link to={`${urlPath}${dni}/edit`}>{editAction}</Link>
 				</div>
-				<div className='field'>
+				<div className="field">
 					<Link to={`${urlPath}${dni}/delete`}>{delAction}</Link>
 				</div>
 			</div>

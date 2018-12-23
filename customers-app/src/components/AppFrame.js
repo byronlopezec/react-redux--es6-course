@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppHeader from './AppHeader';
+import React from "react";
+import PropTypes from "prop-types";
+import AppHeader from "./AppHeader";
 
 const AppFrame = ({ header, body }) => {
 	return (
 		<div>
-			<div className='app-frame'>
+			<div className="app-frame">
 				<AppHeader title={header} />
 				<div>{body}</div>
 				<div>Aplicación Simple de ejemplo!</div>

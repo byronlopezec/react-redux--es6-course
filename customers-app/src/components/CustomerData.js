@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const CustomerData = ({ name, dni, age }) => {
 	return (
 		<div>
-			<div className='customer-data'>
+			<div className="customer-data">
 				<h2>Datos del cliente </h2>
 				<div>
 					<strong>
