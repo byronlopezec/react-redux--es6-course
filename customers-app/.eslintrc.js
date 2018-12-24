@@ -20,7 +20,7 @@ module.exports = {
 		quotes: ["error", "double"],
 		"comma-dangle": ["error", "never"],
 		"jsx-quotes": ["error", "prefer-double"],
-		"no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+		"no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
 		"max-len": [
 			"error",
 			{
