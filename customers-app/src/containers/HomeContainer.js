@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import AppFrame from "../components/AppFrame";
 import CustomersActions from "../components/CustomersActions";
+import Button from "@material-ui/core/Button";
 
 export default class HomeContainer extends Component {
 	static propTypes = {
@@ -23,7 +24,14 @@ export default class HomeContainer extends Component {
 						<div>
 							Este es la pantalla inicial
 							<CustomersActions>
-								<button onClick={this.handleOnClick}>Listar Clients!!</button>
+								<Button
+									variant="contained"
+									onClick={this.handleOnClick}
+									color="primary"
+									className="button-list-clients"
+								>
+									List Clients
+								</Button>
 							</CustomersActions>
 						</div>
 					}

@@ -1,23 +1,23 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import { lighten } from '@material-ui/core/styles/colorManipulator';
+import React from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableRow from "@material-ui/core/TableRow";
+import TableSortLabel from "@material-ui/core/TableSortLabel";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import Checkbox from "@material-ui/core/Checkbox";
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
+import DeleteIcon from "@material-ui/icons/Delete";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import { lighten } from "@material-ui/core/styles/colorManipulator";
 
 let counter = 0;
 function createData(dni, name, edit, del) {
@@ -42,22 +42,22 @@ function stableSort(array, cmp) {
 		if (order !== 0) return order;
 		return a[1] - b[1];
 	});
-	return stabilizedThis.map(el => el[0]);
+	return stabilizedThis.map((el) => el[0]);
 }
 
 function getSorting(order, orderBy) {
-	return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
+	return order === "desc" ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
 }
 
 const rows = [
-	{ id: 'dni', numeric: false, disablePadding: true, label: 'Cedula' },
-	{ id: 'name', numeric: false, disablePadding: false, label: 'Nombre' },
-	{ id: 'edit', numeric: false, disablePadding: false, label: 'edit' },
-	{ id: 'del', numeric: false, disablePadding: false, label: 'del' }
+	{ id: "dni", numeric: false, disablePadding: true, label: "Cedula" },
+	{ id: "name", numeric: false, disablePadding: false, label: "Nombre" },
+	{ id: "edit", numeric: false, disablePadding: false, label: "edit" },
+	{ id: "del", numeric: false, disablePadding: false, label: "del" }
 ];
 
 class EnhancedTableHead extends React.Component {
-	createSortHandler = property => event => {
+	createSortHandler = (property) => (event) => {
 		this.props.onRequestSort(event, property);
 	};
 
@@ -67,25 +67,31 @@ class EnhancedTableHead extends React.Component {
 		return (
 			<TableHead>
 				<TableRow>
-					<TableCell padding='checkbox'>
+					<TableCell padding="checkbox">
 						<Checkbox
 							indeterminate={numSelected > 0 && numSelected < rowCount}
 							checked={numSelected === rowCount}
 							onChange={onSelectAllClick}
 						/>
 					</TableCell>
-					{rows.map(row => {
+					{rows.map((row) => {
 						return (
 							<TableCell
 								key={row.id}
 								numeric={row.numeric}
-								padding={row.disablePadding ? 'none' : 'default'}
-								sortDirection={orderBy === row.id ? order : false}>
-								<Tooltip title='Sort' placement={row.numeric ? 'bottom-end' : 'bottom-start'} enterDelay={300}>
+								padding={row.disablePadding ? "none" : "default"}
+								sortDirection={orderBy === row.id ? order : false}
+							>
+								<Tooltip
+									title="Sort"
+									placement={row.numeric ? "bottom-end" : "bottom-start"}
+									enterDelay={300}
+								>
 									<TableSortLabel
 										active={orderBy === row.id}
 										direction={order}
-										onClick={this.createSortHandler(row.id)}>
+										onClick={this.createSortHandler(row.id)}
+									>
 										{row.label}
 									</TableSortLabel>
 								</Tooltip>
@@ -107,46 +113,41 @@ EnhancedTableHead.propTypes = {
 	rowCount: PropTypes.number.isRequired
 };
 
-const toolbarStyles = theme => ({
+const toolbarStyles = (theme) => ({
 	root: {
 		paddingRight: theme.spacing.unit
 	},
 	highlight:
-		theme.palette.type === 'light'
-			? {
-				color: theme.palette.secondary.main,
-				backgroundColor: lighten(theme.palette.secondary.light, 0.85)
-			  }
-			: {
-				color: theme.palette.text.primary,
-				backgroundColor: theme.palette.secondary.dark
-			  },
+		theme.palette.type === "light"
+			? { color: theme.palette.secondary.main, backgroundColor: lighten(theme.palette.secondary.light, 0.85) }
+			: { color: theme.palette.text.primary, backgroundColor: theme.palette.secondary.dark },
 	spacer: {
-		flex: '1 1 100%'
+		flex: "1 1 100%"
 	},
 	actions: {
 		color: theme.palette.text.secondary
 	},
 	title: {
-		flex: '0 0 auto'
+		flex: "0 0 auto"
 	}
 });
 
-let EnhancedTableToolbar = props => {
+let EnhancedTableToolbar = (props) => {
 	const { numSelected, classes } = props;
 
 	return (
 		<Toolbar
 			className={classNames(classes.root, {
 				[classes.highlight]: numSelected > 0
-			})}>
+			})}
+		>
 			<div className={classes.title}>
 				{numSelected > 0 ? (
-					<Typography color='inherit' variant='subtitle1'>
+					<Typography color="inherit" variant="subtitle1">
 						{numSelected} selected
 					</Typography>
 				) : (
-					<Typography variant='h6' id='tableTitle'>
+					<Typography variant="h6" id="tableTitle">
 						Cliente
 					</Typography>
 				)}
@@ -154,14 +155,14 @@ let EnhancedTableToolbar = props => {
 			<div className={classes.spacer} />
 			<div className={classes.actions}>
 				{numSelected > 0 ? (
-					<Tooltip title='Delete'>
-						<IconButton aria-label='Delete'>
+					<Tooltip title="Delete">
+						<IconButton aria-label="Delete">
 							<DeleteIcon />
 						</IconButton>
 					</Tooltip>
 				) : (
-					<Tooltip title='Filter list'>
-						<IconButton aria-label='Filter list'>
+					<Tooltip title="Filter list">
+						<IconButton aria-label="Filter list">
 							<FilterListIcon />
 						</IconButton>
 					</Tooltip>
@@ -178,31 +179,31 @@ EnhancedTableToolbar.propTypes = {
 
 EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
-const styles = theme => ({
+const styles = (theme) => ({
 	root: {
-		width: '100%',
+		width: "100%",
 		marginTop: theme.spacing.unit * 3
 	},
 	table: {
 		minWidth: 1020
 	},
 	tableWrapper: {
-		overflowX: 'auto'
+		overflowX: "auto"
 	}
 });
 
 class EnhancedTable extends React.Component {
 	state = {
-		order: 'asc',
-		orderBy: 'dni',
+		order: "asc",
+		orderBy: "dni",
 		selected: [],
 		data: [
-			createData('1234567897', 'Byron Lopez', 'edit', 'del'),
-			createData('1772245077', 'Edgar Lopez', 'edit', 'del'),
-			createData('1745077865', 'Mayra Lopez', 'edit', 'del'),
-			createData('1425888796', 'Juan Lopez', 'edit', 'del'),
-			createData('1234598767', 'Diego Lopez', 'edit', 'del'),
-			createData('0896565655', 'Edwin Lopez', 'edit', 'del')
+			createData("1234567897", "Byron Lopez", "edit", "del"),
+			createData("1772245077", "Edgar Lopez", "edit", "del"),
+			createData("1745077865", "Mayra Lopez", "edit", "del"),
+			createData("1425888796", "Juan Lopez", "edit", "del"),
+			createData("1234598767", "Diego Lopez", "edit", "del"),
+			createData("0896565655", "Edwin Lopez", "edit", "del")
 		],
 		page: 0,
 		rowsPerPage: 5
@@ -210,18 +211,18 @@ class EnhancedTable extends React.Component {
 
 	handleRequestSort = (event, property) => {
 		const orderBy = property;
-		let order = 'desc';
+		let order = "desc";
 
-		if (this.state.orderBy === property && this.state.order === 'desc') {
-			order = 'asc';
+		if (this.state.orderBy === property && this.state.order === "desc") {
+			order = "asc";
 		}
 
 		this.setState({ order, orderBy });
 	};
 
-	handleSelectAllClick = event => {
+	handleSelectAllClick = (event) => {
 		if (event.target.checked) {
-			this.setState(state => ({ selected: state.data.map(n => n.id) }));
+			this.setState((state) => ({ selected: state.data.map((n) => n.id) }));
 			return;
 		}
 		this.setState({ selected: [] });
@@ -249,11 +250,11 @@ class EnhancedTable extends React.Component {
 		this.setState({ page });
 	};
 
-	handleChangeRowsPerPage = event => {
+	handleChangeRowsPerPage = (event) => {
 		this.setState({ rowsPerPage: event.target.value });
 	};
 
-	isSelected = id => this.state.selected.indexOf(id) !== -1;
+	isSelected = (id) => this.state.selected.indexOf(id) !== -1;
 
 	render() {
 		const { classes } = this.props;
@@ -264,7 +265,7 @@ class EnhancedTable extends React.Component {
 			<Paper className={classes.root}>
 				<EnhancedTableToolbar numSelected={selected.length} />
 				<div className={classes.tableWrapper}>
-					<Table className={classes.table} aria-labelledby='tableTitle'>
+					<Table className={classes.table} aria-labelledby="tableTitle">
 						<EnhancedTableHead
 							numSelected={selected.length}
 							order={order}
@@ -276,21 +277,22 @@ class EnhancedTable extends React.Component {
 						<TableBody>
 							{stableSort(data, getSorting(order, orderBy))
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-								.map(n => {
+								.map((n) => {
 									const isSelected = this.isSelected(n.id);
 									return (
 										<TableRow
 											hover
-											onClick={event => this.handleClick(event, n.id)}
-											role='checkbox'
+											onClick={(event) => this.handleClick(event, n.id)}
+											role="checkbox"
 											aria-checked={isSelected}
 											tabIndex={-1}
 											key={n.id}
-											selected={isSelected}>
-											<TableCell padding='checkbox'>
+											selected={isSelected}
+										>
+											<TableCell padding="checkbox">
 												<Checkbox checked={isSelected} />
 											</TableCell>
-											<TableCell padding='none'>{n.dni}</TableCell>
+											<TableCell padding="none">{n.dni}</TableCell>
 											<TableCell>{n.name}</TableCell>
 											<TableCell>{n.edit}</TableCell>
 											<TableCell>{n.del}</TableCell>
@@ -307,15 +309,15 @@ class EnhancedTable extends React.Component {
 				</div>
 				<TablePagination
 					rowsPerPageOptions={[5, 10, 25]}
-					component='div'
+					component="div"
 					count={data.length}
 					rowsPerPage={rowsPerPage}
 					page={page}
 					backIconButtonProps={{
-						'aria-label': 'Previous Page'
+						"aria-label": "Previous Page"
 					}}
 					nextIconButtonProps={{
-						'aria-label': 'Next Page'
+						"aria-label": "Next Page"
 					}}
 					onChangePage={this.handleChangePage}
 					onChangeRowsPerPage={this.handleChangeRowsPerPage}

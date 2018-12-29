@@ -12,5 +12,5 @@ module.exports = {
 	arrowParens: "always", //"<avoid|always>"
 	parser: "babylon",
 	proseWrap: "preserve", //"<always|never|preserve>"
-	htmlWhitespaceSensitivity: "ignore" //'<css|strict|ignore>',
+	htmlWhitespaceSensitivity: "css" //'<css|strict|ignore>',
 };
