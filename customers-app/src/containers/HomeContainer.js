@@ -1,18 +1,19 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import AppFrame from "../components/AppFrame";
 import CustomersActions from "../components/CustomersActions";
 import Button from "@material-ui/core/Button";
 
-export default class HomeContainer extends Component {
+class HomeContainer extends Component {
 	static propTypes = {
-		// prop: PropTypes
+		history: PropTypes.object
 	};
 
 	handleOnClick = () => {
 		// eslint-disable-next-line no-console
 		console.log("HandleOnClick");
+		this.props.history.push("/customers");
 	};
 
 	render() {
@@ -40,3 +41,6 @@ export default class HomeContainer extends Component {
 		);
 	}
 }
+
+//withRouter permite agregar 3 propiedades como history,location y match
+export default withRouter(HomeContainer);

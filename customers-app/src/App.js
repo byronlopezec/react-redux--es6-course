@@ -17,6 +17,9 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					{/* exact permite indicar que el componente se muestre unicamente si la ruta es exacta */}
+					{/* Route le pasas propiedades como history,location, al componente*/}
+					{/* pero si se pone una funcion HomeContainer, esas propiedades de router no se pasan*/}
+					{/* Para solucionar esto es necesario usar withRouter en el componente */}
 					<Route exact path="/" component={HomeContainer} />
 					{/* lo que signifia que si yo pongo /customers se mostrara solamente el componente customersList */}
 					{/* si le quito el exact a "/customers" se mostrara tanto el componente renderHome("/")  */}
