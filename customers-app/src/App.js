@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import HomeContainer from "./containers/HomeContainer";
 
 class App extends Component {
 	renderHome = () => <h1>Home</h1>;
@@ -16,7 +17,7 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					{/* exact permite indicar que el componente se muestre unicamente si la ruta es exacta */}
-					<Route exact path="/" component={this.renderHome} />
+					<Route exact path="/" component={HomeContainer} />
 					{/* lo que signifia que si yo pongo /customers se mostrara solamente el componente customersList */}
 					{/* si le quito el exact a "/customers" se mostrara tanto el componente renderHome("/")  */}
 					{/* y tambien el componente renderCustomerListContainer("/customers") */}
