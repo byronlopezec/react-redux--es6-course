@@ -1,31 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
 
-const CustomerListItem = ({ name, editAction, delAction, urlPath, dni }) => {
+const CustomerListItem = ({ dni, name, age, editAction, delAction, urlPath }) => {
 	return (
-		<div>
-			<div className="customer-list-item">
-				<div className="field">
-					<Link to={`${urlPath}${dni}`}>{name}</Link>
-				</div>
-				<div className="field">
-					<Link to={`${urlPath}${dni}/edit`}>{editAction}</Link>
-				</div>
-				<div className="field">
-					<Link to={`${urlPath}${dni}/delete`}>{delAction}</Link>
-				</div>
-			</div>
-		</div>
+		<TableRow key={dni}>
+			<TableCell component="th" scope="row">
+				{dni}
+			</TableCell>
+			<TableCell align="right">{name}</TableCell>
+			<TableCell align="right">{age}</TableCell>
+			<TableCell align="right">
+				<Link to={`${urlPath}${dni}/edit`}>{editAction}</Link>
+			</TableCell>
+			<TableCell align="right">
+				<Link to={`${urlPath}${dni}/delete`}>{delAction}</Link>
+			</TableCell>
+		</TableRow>
 	);
 };
 
 CustomerListItem.propTypes = {
 	name: PropTypes.string.isRequired,
-	editAction: PropTypes.bool.isRequired,
-	delAction: PropTypes.bool.isRequired,
-	urlPath: PropTypes.string.isRequired,
-	dni: PropTypes.number.isRequired
+	dni: PropTypes.string.isRequired,
+	age: PropTypes.number.isRequired,
+	editAction: PropTypes.string.isRequired,
+	delAction: PropTypes.string.isRequired,
+	urlPath: PropTypes.string.isRequired
 };
 
 export default CustomerListItem;
