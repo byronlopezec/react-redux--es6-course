@@ -16,18 +16,16 @@ const customers = [
 
 export default class CustomersContainer extends Component {
 	static propTypes = {
-		prop: PropTypes.func
+		history: PropTypes.object
 	};
 
 	handleAddNew = () => {
-		// eslint-disable-next-line no-console
-		console.log("New Client!");
+		this.props.history.push("/customers/new");
 	};
 
 	renderBody = (customers) => {
 		return (
 			<div>
-				<CustomerList customers={customers} urlPath={"customers/"} />
 				<CustomersActions>
 					<Button
 						variant="contained"
@@ -38,6 +36,8 @@ export default class CustomersContainer extends Component {
 						Nuevo Cliente
 					</Button>
 				</CustomersActions>
+				<br />
+				<CustomerList customers={customers} urlPath={"customers/"} />
 			</div>
 		);
 	};

@@ -10,7 +10,10 @@ const CustomerListItem = ({ dni, name, age, editAction, delAction, urlPath }) =>
 			<TableCell component="th" scope="row">
 				{dni}
 			</TableCell>
-			<TableCell align="right">{name}</TableCell>
+			<TableCell align="right">
+				<Link to={`${urlPath}${dni}`}>{name}</Link>
+			</TableCell>
+
 			<TableCell align="right">{age}</TableCell>
 			<TableCell align="right">
 				<Link to={`${urlPath}${dni}/edit`}>{editAction}</Link>
