@@ -1,6 +1,9 @@
-export const FETCH_CUSTOMERS = "FETCH_CUSTOMERS";
+import { FETCH_CUSTOMERS } from "../constants";
+import { createAction } from "redux-actions";
 
-export const fetchCustomers = () => ({
-	type: FETCH_CUSTOMERS,
-	payload: null
-});
+// export const fetchCustomers = () => ({
+// 	type: FETCH_CUSTOMERS,
+// 	payload: null
+// });
+
+export const fetchCustomers = createAction(FETCH_CUSTOMERS);
