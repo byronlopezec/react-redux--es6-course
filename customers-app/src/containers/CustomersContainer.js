@@ -4,6 +4,9 @@ import AppFrame from "../components/AppFrame";
 import CustomerList from "../components/CustomerList";
 import CustomersActions from "../components/CustomersActions";
 import { Button } from "@material-ui/core";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchCustomers } from "./../actions/fetchCustomers";
 
 const customers = [
 	{ dni: "1234567897", name: "Lopez Byron", age: 26 },
@@ -14,9 +17,14 @@ const customers = [
 	{ dni: "1702216872", name: "Jose Flores", age: 17 }
 ];
 
-export default class CustomersContainer extends Component {
+class CustomersContainer extends Component {
 	static propTypes = {
-		history: PropTypes.object
+		history: PropTypes.object,
+		fetchCustomers: PropTypes.func.isRequired
+	};
+
+	componentDidMount = () => {
+		this.props.fetchCustomers();
 	};
 
 	handleAddNew = () => {
@@ -50,3 +58,16 @@ export default class CustomersContainer extends Component {
 		);
 	}
 }
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {
+	fetchCustomers
+};
+
+export default withRouter(
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	)(CustomersContainer)
+);
