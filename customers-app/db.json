@@ -1,0 +1,38 @@
+{
+	"install": {
+		"install": "npm install -g json-server",
+		"start": "json-server --watch db.json --port 4000",
+		"browser": "localhost:4000/install" 
+	},
+	"customers" : [
+		{ "dni": "1234567897", "name": "Lopez Byron", "age": 26
+		},
+		{ "dni": "1722450779", "name": "Erika Lima", "age": 28
+		},
+		{ "dni": "1702216876", "name": "Santiago Proanio", "age": 24
+		},
+		{ "dni": "0532659877", "name": "Juan Vera", "age": 18
+		},
+		{ "dni": "1702216871", "name": "Maria Idalgo", "age": 32
+		},
+		{ "dni": "1702216872", "name": "Jose Flores", "age": 17
+		}
+	],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
