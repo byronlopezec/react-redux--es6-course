@@ -1,1 +1,1 @@
-export const getCustomers = (state) => state.customers;
+export const getCustomers = (state) => state.customerssss;
