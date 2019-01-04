@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import HomeContainer from "./containers/HomeContainer";
 import CustomersContainer from "./containers/CustomersContainer";
+import { CustomerContainer } from "./containers/CustomerContainer";
 
 class App extends Component {
 	// renderHome = () => <h1>Home</h1>;
 	// renderCustomerListContainer = () => <h1>Customer List Container</h1>;
-	renderCustomerContainer = () => <h1>Customers Container</h1>;
 	renderCustomerNewContainer = () => <h1>Customer New Container</h1>;
 
 	// <Link to="/Customer">Cliente</Link> <br />
@@ -29,7 +29,7 @@ class App extends Component {
 					{/* Switch toma la primera coicidencia valida y descarta el resto! */}
 					<Switch>
 						<Route path="/customers/new" component={this.renderCustomerNewContainer} />
-						<Route path="/customers/:dni" component={this.renderCustomerContainer} />
+						<Route path="/customers/:dni" component={CustomerContainer} />
 					</Switch>
 				</div>
 			</Router>
