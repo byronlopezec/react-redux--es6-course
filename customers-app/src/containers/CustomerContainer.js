@@ -5,13 +5,13 @@ import AppFrame from "../components/AppFrame";
 
 export class CustomerContainer extends Component {
 	static propTypes = {
-		prop: PropTypes.func
+		dni: PropTypes.string.isRequired
 	};
 
 	render() {
 		return (
 			<div>
-				<AppFrame header={"Cliente"} body={<p>Datos del cliente</p>} />
+				<AppFrame header={`Cliente ${this.props.dni}`} body={<p>Datos del cliente</p>} />
 			</div>
 		);
 	}

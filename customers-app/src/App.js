@@ -29,7 +29,16 @@ class App extends Component {
 					{/* Switch toma la primera coicidencia valida y descarta el resto! */}
 					<Switch>
 						<Route path="/customers/new" component={this.renderCustomerNewContainer} />
-						<Route path="/customers/:dni" component={CustomerContainer} />
+						{/* <Route path="/customers/:cedula" component={CustomerContainer} /> */}
+						<Route
+							path="/customers/:cedula"
+							render={(props) => <CustomerContainer dni={props.match.params.cedula} />}
+						/>
+						{/*
+						params: {…}
+							cedula: "1234567897"
+						path: "/customers/:cedula"
+						url: "/customers/1234567897"*/}
 					</Switch>
 				</div>
 			</Router>
