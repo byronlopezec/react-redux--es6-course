@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import AppFrame from "../components/AppFrame";
+import { getCustomerByDni } from "../selectors/customers.selector";
 
 class CustomerContainer extends Component {
 	static propTypes = {
@@ -26,7 +27,7 @@ CustomerContainer.defaultProps = {
 };
 
 const mapStateToProps = (state, props) => ({
-	customer: state.customers.find((c) => c.dni === props.dni)
+	customer: getCustomerByDni(state, props)
 });
 
 const mapDispatchToProps = {};
