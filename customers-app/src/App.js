@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import HomeContainer from "./containers/HomeContainer";
 import CustomersContainer from "./containers/CustomersContainer";
-import { CustomerContainer } from "./containers/CustomerContainer";
+import CustomerContainer from "./containers/CustomerContainer";
 
 class App extends Component {
 	// renderHome = () => <h1>Home</h1>;

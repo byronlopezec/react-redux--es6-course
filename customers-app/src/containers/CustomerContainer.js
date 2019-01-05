@@ -3,22 +3,31 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import AppFrame from "../components/AppFrame";
 
-export class CustomerContainer extends Component {
+class CustomerContainer extends Component {
 	static propTypes = {
-		dni: PropTypes.string.isRequired
+		dni: PropTypes.string.isRequired,
+		customer: PropTypes.object
 	};
 
 	render() {
+		// let { dni, customer } = this.props;
 		return (
 			<div>
-				<AppFrame header={`Cliente ${this.props.dni}`} body={<p>Datos del cliente</p>} />
+				<AppFrame
+					header={`Cliente ${this.props.dni}`}
+					body={<p>Datos del cliente: {this.props.customer.name}</p>}
+				/>
 			</div>
 		);
 	}
 }
+CustomerContainer.defaultProps = {
+	customer: {}
+};
 
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state, props) => ({
+	customer: state.customers.find((c) => c.dni === props.dni)
+});
 
 const mapDispatchToProps = {};
 
