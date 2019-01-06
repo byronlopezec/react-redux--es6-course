@@ -18,6 +18,7 @@ class CustomerContainer extends Component {
 			// eslint-disable-next-line react/no-children-prop
 			children={({ match }) => {
 				let CustomerControl = match ? CustomerEdit : CustomerData;
+				//InitialValues es un propiedad de redux-form
 				return <CustomerControl {...this.props.customer} />;
 			}}
 		/>
