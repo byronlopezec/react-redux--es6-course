@@ -1,9 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { reduxForm, Field } from "redux-form";
-import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+import { setPropsAsInitial } from "../helps/setPropsAsInitial";
 
-const CustomerEdit = ({ name, dni, age }) => {
+const CustomerEdit = () => {
 	return (
 		<div>
 			<h2>Editar cliente</h2>
@@ -36,13 +36,10 @@ CustomerEdit.propTypes = {
 
 const CustomerEditForm = reduxForm({ form: "CustomerEdit" })(CustomerEdit);
 
-const mapStateToProps = (state, props) => ({
-	initialValues: props
-});
+// //No es un componente conectado porque no esta utilizando el state
+// const mapStateToProps = (state, props) => ({
+// 	initialValues: props
+// });
+// export default connect(mapStateToProps)(CustomerEditForm);
 
-const mapDispatchToProps = {};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(CustomerEditForm);
+export default setPropsAsInitial(CustomerEditForm);
