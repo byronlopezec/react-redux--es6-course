@@ -19,4 +19,4 @@ CustomerEdit.propTypes = {
 	age: PropTypes.number.isRequired
 };
 
-export default reduxForm({ Form: "CustomerEdit" })(CustomerEdit);
+export default reduxForm({ form: "CustomerEdit" })(CustomerEdit);

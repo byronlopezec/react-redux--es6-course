@@ -8,5 +8,5 @@ import { reducer as reduxForm } from "redux-form";
 export default combineReducers({
 	// customerssss
 	customers,
-	Form: reduxForm
+	form: reduxForm
 });
