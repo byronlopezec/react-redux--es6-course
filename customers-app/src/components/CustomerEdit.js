@@ -1,14 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { reduxForm } from "redux-form";
+import { reduxForm, Field } from "redux-form";
 
 const CustomerEdit = ({ name, dni, age }) => {
 	return (
 		<div>
 			<h2>Editar cliente</h2>
-			<h3>
-				Nombre: {name} / Cedula: {dni} / Edad: {age}
-			</h3>
+			<form action="">
+				<div>
+					<label htmlFor="">Nombre: </label>
+					<Field name="name" component="input" type="text" />
+				</div>
+				<div>
+					<label htmlFor="">Cédula: </label>
+					<Field name="dni" component="input" type="text" />
+				</div>
+				<div>
+					<label htmlFor="">Edad: </label>
+					<Field name="age" component="input" type="number" />
+				</div>
+			</form>
 		</div>
 	);
 };
