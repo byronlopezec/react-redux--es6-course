@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import AppFrame from "../components/AppFrame";
 import { getCustomerByDni } from "../selectors/customers.selector";
 import { Route } from "react-router-dom";
+import CustomerEdit from "../components/CustomerEdit";
+import CustomerData from "../components/CustomerData";
 class CustomerContainer extends Component {
 	static propTypes = {
 		dni: PropTypes.string.isRequired,
@@ -14,11 +16,13 @@ class CustomerContainer extends Component {
 		<Route
 			path="/customers/:cedula/edit"
 			// eslint-disable-next-line react/no-children-prop
-			children={({ match }) => (match ? <p>Es edicion</p> : <p>No es edicion</p>)}
+			children={({ match }) => {
+				let CustomerControl = match ? CustomerEdit : CustomerData;
+				return <CustomerControl {...this.props.customer} />;
+			}}
 		/>
 	);
 
-	// <p>Datos del cliente: {this.props.customer.name}</p>
 	render() {
 		return (
 			<div>

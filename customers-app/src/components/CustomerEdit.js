@@ -14,7 +14,7 @@ const CustomerEdit = ({ name, dni, age }) => {
 
 CustomerEdit.propTypes = {
 	name: PropTypes.string.isRequired,
-	dni: PropTypes.number.isRequired,
+	dni: PropTypes.string.isRequired,
 	age: PropTypes.number.isRequired
 };
 
