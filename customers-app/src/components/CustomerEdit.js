@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { reduxForm } from "redux-form";
 
 const CustomerEdit = ({ name, dni, age }) => {
 	return (
@@ -18,4 +19,4 @@ CustomerEdit.propTypes = {
 	age: PropTypes.number.isRequired
 };
 
-export default CustomerEdit;
+export default reduxForm({ Form: "CustomerEdit" })(CustomerEdit);
