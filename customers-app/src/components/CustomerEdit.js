@@ -3,6 +3,15 @@ import { reduxForm, Field } from "redux-form";
 import { PropTypes } from "prop-types";
 import { setPropsAsInitial } from "../helps/setPropsAsInitial";
 
+const isRequerid = (value) => !value && "Este campo es requerido!";
+
+//meta.touched: propiedad de Field que indica si un componente ha sido tocado por el usuario
+const MyField = ({ input, meta }) => (
+	<div>
+		<input {...input} type="text" />
+		{meta.touched && meta.error && <span>{meta.error}</span>}
+	</div>
+);
 const CustomerEdit = () => {
 	return (
 		<div>
@@ -13,11 +22,11 @@ const CustomerEdit = () => {
 					le pasa la propiedad name,dni,age */}
 					{/* Si le cambio a <Field name="name1" hay error*/}
 					<label htmlFor="name">Nombre: </label>
-					<Field name="name" component="input" type="text" />
+					<Field name="name" component={MyField} type="text" validate={isRequerid} />
 				</div>
 				<div>
 					<label htmlFor="dni">Cédula: </label>
-					<Field name="dni" component="input" type="text" />
+					<Field name="dni" component={MyField} type="text" validate={isRequerid} />
 				</div>
 				<div>
 					<label htmlFor="age">Edad: </label>
