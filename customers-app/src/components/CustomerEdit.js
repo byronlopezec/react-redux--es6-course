@@ -6,31 +6,35 @@ import { setPropsAsInitial } from "../helps/setPropsAsInitial";
 const isRequerid = (value) => !value && "Este campo es requerido!";
 
 //meta.touched: propiedad de Field que indica si un componente ha sido tocado por el usuario
-const MyField = ({ input, meta }) => (
+const MyField = ({ input, meta, type, label, name }) => (
 	<div>
-		<input {...input} type="text" />
-		{meta.touched && meta.error && <span>{meta.error}</span>}
+		<label htmlFor={name}>{label} </label>
+		<input {...input} type={!type ? "text" : type} />
+		{meta.touched && meta.error && (
+			<span>
+				<br /> {meta.error}
+			</span>
+		)}
 	</div>
 );
+
+const isNumber = (value) => {
+	return isNaN(Number(value)) && "El campo debe ser un numero";
+};
+
 const CustomerEdit = () => {
 	return (
 		<div>
 			<h2>Editar cliente</h2>
 			<form action="">
 				<div>
-					{/* <CustomerControl initialValues={this.props.customer} 
-					le pasa la propiedad name,dni,age */}
-					{/* Si le cambio a <Field name="name1" hay error*/}
-					<label htmlFor="name">Nombre: </label>
-					<Field name="name" component={MyField} type="text" validate={isRequerid} />
+					<Field name="name" component={MyField} label="Nombre" validate={isRequerid} />
 				</div>
 				<div>
-					<label htmlFor="dni">Cédula: </label>
-					<Field name="dni" component={MyField} type="text" validate={isRequerid} />
+					<Field name="dni" component={MyField} label="Cédula" validate={[isRequerid, isNumber]} />
 				</div>
 				<div>
-					<label htmlFor="age">Edad: </label>
-					<Field name="age" component="input" type="number" />
+					<Field name="age" component={MyField} label="Edad" validate={isNumber} />
 				</div>
 			</form>
 		</div>
@@ -45,7 +49,7 @@ CustomerEdit.propTypes = {
 
 const CustomerEditForm = reduxForm({ form: "CustomerEdit" })(CustomerEdit);
 
-// //No es un componente conectado porque no esta utilizando el state
+//No es un componente conectado porque no esta utilizando el state
 // const mapStateToProps = (state, props) => ({
 // 	initialValues: props
 // });
