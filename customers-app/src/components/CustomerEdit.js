@@ -2,7 +2,7 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { PropTypes } from "prop-types";
 import { setPropsAsInitial } from "../helps/setPropsAsInitial";
-
+import CustomersActions from "../components/CustomersActions";
 //meta.touched: propiedad de Field que indica si un componente ha sido tocado por el usuario
 const MyField = ({ input, meta, type, label, name }) => (
 	<div>
@@ -29,11 +29,11 @@ const validate = (values) => {
 	return error;
 };
 
-const CustomerEdit = () => {
+const CustomerEdit = ({ handleSubmit, submitting }) => {
 	return (
 		<div>
 			<h2>Editar cliente</h2>
-			<form action="">
+			<form onSubmit={handleSubmit}>
 				<div>
 					<Field name="name" component={MyField} label="Nombre" />
 				</div>
@@ -43,6 +43,11 @@ const CustomerEdit = () => {
 				<div>
 					<Field name="age" component={MyField} label="Edad" />
 				</div>
+				<CustomersActions>
+					<button type="submit" disabled={submitting}>
+						Aceptar
+					</button>
+				</CustomersActions>
 			</form>
 		</div>
 	);
@@ -51,7 +56,9 @@ const CustomerEdit = () => {
 CustomerEdit.propTypes = {
 	name: PropTypes.string,
 	dni: PropTypes.string,
-	age: PropTypes.number
+	age: PropTypes.number,
+	handleSubmit: PropTypes.func,
+	submitting: PropTypes.bool
 };
 
 const CustomerEditForm = reduxForm({ form: "CustomerEdit", validate })(CustomerEdit);

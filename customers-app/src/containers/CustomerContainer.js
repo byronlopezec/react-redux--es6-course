@@ -12,6 +12,10 @@ class CustomerContainer extends Component {
 		customer: PropTypes.object
 	};
 
+	handleSubmit = (values) => {
+		alert(JSON.stringify(values));
+	};
+
 	renderBody = () => (
 		<Route
 			path="/customers/:cedula/edit"
@@ -19,7 +23,7 @@ class CustomerContainer extends Component {
 			children={({ match }) => {
 				let CustomerControl = match ? CustomerEdit : CustomerData;
 				//InitialValues es un propiedad de redux-form
-				return <CustomerControl {...this.props.customer} />;
+				return <CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} />;
 			}}
 		/>
 	);
