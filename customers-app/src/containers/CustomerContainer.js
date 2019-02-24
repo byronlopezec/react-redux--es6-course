@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import AppFrame from "../components/AppFrame";
 import { getCustomerByDni } from "../selectors/customers.selector";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import CustomerEdit from "../components/CustomerEdit";
 import CustomerData from "../components/CustomerData";
+
 class CustomerContainer extends Component {
 	static propTypes = {
 		dni: PropTypes.string.isRequired,
@@ -16,6 +17,10 @@ class CustomerContainer extends Component {
 		alert(JSON.stringify(values));
 	};
 
+	handleOnBack = () => {
+		this.props.history.goBack();
+	};
+
 	renderBody = () => (
 		<Route
 			path="/customers/:cedula/edit"
@@ -23,7 +28,9 @@ class CustomerContainer extends Component {
 			children={({ match }) => {
 				let CustomerControl = match ? CustomerEdit : CustomerData;
 				//InitialValues es un propiedad de redux-form
-				return <CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} />;
+				return (
+					<CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} onBack={this.handleOnBack} />
+				);
 			}}
 		/>
 	);
@@ -46,7 +53,9 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {};
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(CustomerContainer);
+export default withRouter(
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	)(CustomerContainer)
+);
