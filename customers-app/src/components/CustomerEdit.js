@@ -29,19 +29,23 @@ const validate = (values) => {
 	return error;
 };
 
+const toNumber = (values) => values && Number(values);
+const toUpper = (values) => values && values.toUpperCase();
+const toLower = (values) => values && values.toLowerCase();
+
 const CustomerEdit = ({ handleSubmit, submitting, onBack }) => {
 	return (
 		<div>
 			<h2>Editar cliente</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<Field name="name" component={MyField} label="Nombre" />
+					<Field name="name" component={MyField} label="Nombre" parse={toUpper} format={toLower} />
 				</div>
 				<div>
 					<Field name="dni" component={MyField} label="Cédula" />
 				</div>
 				<div>
-					<Field name="age" component={MyField} label="Edad" />
+					<Field name="age" component={MyField} label="Edad" parse={toNumber} />
 				</div>
 				<CustomersActions>
 					<button type="submit" disabled={submitting}>

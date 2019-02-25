@@ -8,26 +8,26 @@
   "customers": [
     {
       "dni": "1234567897",
-      "name": "Byron López",
+      "name": "BYRON LOPEZ",
       "age": 26,
       "id": "1234567897"
     },
     {
       "id": "1722450779",
       "dni": "1722450779",
-      "name": "Erika Sanchez",
+      "name": "ERIKA SANCHEZ",
       "age": 28
     },
     {
       "id": "1702216876",
       "dni": "1702216876",
-      "name": "Santiago Proanio",
+      "name": "SANTIAGO PROANIO",
       "age": 24
     },
     {
       "id": "0532659877",
       "dni": "0532659877",
-      "name": "Juan Vera",
+      "name": "JUAN VERA",
       "age": 18
     },
     {
