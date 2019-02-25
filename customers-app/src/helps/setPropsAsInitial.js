@@ -4,7 +4,8 @@ import React, { Component } from "react";
 export const setPropsAsInitial = (WrappedComponent) => {
 	class NewComponente extends Component {
 		render() {
-			return <WrappedComponent {...this.props} initialValues={this.props} />;
+			//initialValues se inicia una sola vez
+			return <WrappedComponent {...this.props} initialValues={this.props} enableReinitialize />;
 		}
 	}
 	return NewComponente;
