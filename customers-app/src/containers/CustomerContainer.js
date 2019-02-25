@@ -16,7 +16,7 @@ class CustomerContainer extends Component {
 	};
 
 	componentDidMount() {
-		if (this.props.customer) {
+		if (this.props.custome == undefined) {
 			this.props.fetchCustomers();
 		}
 	}
@@ -34,11 +34,18 @@ class CustomerContainer extends Component {
 			path="/customers/:cedula/edit"
 			// eslint-disable-next-line react/no-children-prop
 			children={({ match }) => {
-				let CustomerControl = match ? CustomerEdit : CustomerData;
-				//InitialValues es un propiedad de redux-form
-				return (
-					<CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} onBack={this.handleOnBack} />
-				);
+				if (this.props.customer) {
+					let CustomerControl = match ? CustomerEdit : CustomerData;
+					//InitialValues es un propiedad de redux-form
+					return (
+						<CustomerControl
+							{...this.props.customer}
+							onSubmit={this.handleSubmit}
+							onBack={this.handleOnBack}
+						/>
+					);
+				}
+				return null;
 			}}
 		/>
 	);
@@ -51,9 +58,6 @@ class CustomerContainer extends Component {
 		);
 	}
 }
-CustomerContainer.defaultProps = {
-	customer: {}
-};
 
 const mapStateToProps = (state, props) => ({
 	customer: getCustomerByDni(state, props)
