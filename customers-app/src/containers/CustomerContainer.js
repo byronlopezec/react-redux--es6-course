@@ -7,22 +7,25 @@ import { Route, withRouter } from "react-router-dom";
 import CustomerEdit from "../components/CustomerEdit";
 import CustomerData from "../components/CustomerData";
 import { fetchCustomers } from "../actions/fetchCustomers";
+import { updateCustomer } from "../actions/updateCustomer";
 
 class CustomerContainer extends Component {
 	static propTypes = {
 		dni: PropTypes.string.isRequired,
 		customer: PropTypes.object,
-		fetchCustomers: PropTypes.func.isRequired
+		fetchCustomers: PropTypes.func.isRequired,
+		updateCustomer: PropTypes.func
 	};
 
 	componentDidMount() {
-		if (this.props.custome == undefined) {
+		if (this.props.custome === undefined) {
 			this.props.fetchCustomers();
 		}
 	}
 
 	handleSubmit = (values) => {
-		alert(JSON.stringify(values));
+		const { dni } = values;
+		this.props.updateCustomer(dni, values);
 	};
 
 	handleOnBack = () => {
@@ -64,7 +67,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = {
-	fetchCustomers
+	fetchCustomers,
+	updateCustomer
 };
 
 export default withRouter(
