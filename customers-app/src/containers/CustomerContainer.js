@@ -25,7 +25,9 @@ class CustomerContainer extends Component {
 
 	handleSubmit = (values) => {
 		const { dni } = values;
-		this.props.updateCustomer(dni, values);
+		//Necesita ponerse un return para que el submitting pueda funcionar
+		// de esta forma se desactiva el botton aceptar mientras retorna la promesa
+		return this.props.updateCustomer(dni, values);
 	};
 
 	handleOnBack = () => {
