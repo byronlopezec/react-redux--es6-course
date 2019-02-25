@@ -4,7 +4,6 @@ import React, { Component } from "react";
 export const setPropsAsInitial = (WrappedComponent) => {
 	class NewComponente extends Component {
 		render() {
-			alert(JSON.stringify(this.props));
 			//initialValues se inicia una sola vez
 			//Por ello es necesario enableReinitialize para reiniciar con los primeros valores.
 			// return <WrappedComponent {...this.props} initialValues={this.props} enableReinitialize />;

@@ -41,6 +41,12 @@
       "dni": "1702216872",
       "name": "Jose Flores",
       "age": 17
+    },
+    {
+      "id": "1234567890",
+      "dni": "1234567890",
+      "name": "David Yanez",
+      "age": 24
     }
   ],
   "posts": [

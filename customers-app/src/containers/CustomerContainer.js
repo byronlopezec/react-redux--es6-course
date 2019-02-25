@@ -46,6 +46,7 @@ class CustomerContainer extends Component {
 						<CustomerControl
 							{...this.props.customer}
 							onSubmit={this.handleSubmit}
+							onSubmitSuccess={this.handleOnBack}
 							onBack={this.handleOnBack}
 						/>
 					);
