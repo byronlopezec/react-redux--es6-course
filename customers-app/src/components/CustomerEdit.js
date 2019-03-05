@@ -32,6 +32,9 @@ const validate = (values) => {
 const toNumber = (values) => values && Number(values);
 const toUpper = (values) => values && values.toUpperCase();
 const toLower = (values) => values && values.toLowerCase();
+const onlyGrow = (value, previousValue) =>
+	// eslint-disable-next-line no-console
+	value && previousValue && value >= 18 ? value : previousValue;
 
 const CustomerEdit = ({ handleSubmit, submitting, onBack }) => {
 	return (
@@ -45,7 +48,14 @@ const CustomerEdit = ({ handleSubmit, submitting, onBack }) => {
 					<Field name="dni" component={MyField} label="Cédula" />
 				</div>
 				<div>
-					<Field name="age" component={MyField} label="Edad" parse={toNumber} />
+					<Field
+						name="age"
+						type="number"
+						component={MyField}
+						label="Edad"
+						parse={toNumber}
+						normalize={onlyGrow}
+					/>
 				</div>
 				<CustomersActions>
 					<button type="submit" disabled={submitting}>
