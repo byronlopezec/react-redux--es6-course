@@ -3,13 +3,14 @@
     "install": "npm install -g json-server",
     "start": "json-server --watch db.json --port 4000",
     "browser": "localhost:4000/install",
-    "readme": "Put,Push,Delete need id"
+    "readme": "Put,Push,Delete need id",
+    "node json-server": "node json-server.js"
   },
   "customers": [
     {
       "dni": "1234567897",
       "name": "BYRON LOPEZ",
-      "age": 20,
+      "age": 270,
       "id": "1234567897"
     },
     {

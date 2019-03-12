@@ -1,8 +1,16 @@
 //Funcion que rotarna otra función
-export const apiGet = (url) => () => fetch(url).then((response) => response.json());
-export const apiPut = (url, dni, obj) => () =>
-	fetch(`${url}/${dni}`, {
+export const apiGet = (url) => () => fetch(url).then((v) => v.json());
+
+export const apiPut = (url, id, obj) => () =>
+	fetch(`${url}/${id}`, {
 		method: "PUT",
 		body: JSON.stringify(obj),
 		headers: new Headers({ "Content-type": "application/json" })
-	}).then((v) => v.json());
+	})
+		.then((v) => JSON.stringify(v))
+		.then((r) => {
+			if (r.error) {
+				return Promise.reject(r.validation);
+			}
+			return r;
+		});

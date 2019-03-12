@@ -34,7 +34,7 @@ const toUpper = (values) => values && values.toUpperCase();
 const toLower = (values) => values && values.toLowerCase();
 const onlyGrow = (value, previousValue) =>
 	// eslint-disable-next-line no-console
-	value && previousValue && value >= 18 ? value : previousValue;
+	value && previousValue && value > previousValue ? value : previousValue;
 
 const CustomerEdit = ({ handleSubmit, submitting, onBack }) => {
 	return (
