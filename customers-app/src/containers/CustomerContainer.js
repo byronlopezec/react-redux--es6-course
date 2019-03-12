@@ -37,6 +37,8 @@ class CustomerContainer extends Component {
 
 	handleOnBack = () => this.props.history.goBack();
 
+	handleSubmitSuccess = () => this.props.history.goBack();
+
 	renderBody = () => (
 		<Route
 			path="/customers/:cedula/edit"
@@ -49,7 +51,7 @@ class CustomerContainer extends Component {
 						<CustomerControl
 							{...this.props.customer}
 							onSubmit={this.handleSubmit}
-							onSubmitSuccess={this.handleOnBack}
+							onSubmitSuccess={this.handleSubmitSuccess}
 							onBack={this.handleOnBack}
 						/>
 					);
