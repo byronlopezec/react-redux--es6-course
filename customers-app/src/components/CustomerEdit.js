@@ -3,6 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import { PropTypes } from "prop-types";
 import { setPropsAsInitial } from "../helps/setPropsAsInitial";
 import CustomersActions from "../components/CustomersActions";
+import { Prompt } from "react-router-dom";
 //meta.touched: propiedad de Field que indica si un componente ha sido tocado por el usuario
 const MyField = ({ input, meta, type, label, name }) => (
 	<div>
@@ -36,7 +37,7 @@ const onlyGrow = (value, previousValue) =>
 	// eslint-disable-next-line no-console
 	value && previousValue && value > 18 ? value : previousValue;
 
-const CustomerEdit = ({ handleSubmit, submitting, onBack }) => {
+const CustomerEdit = ({ handleSubmit, submitting, onBack, submitSucceeded, pristine }) => {
 	return (
 		<div>
 			<h2>Editar cliente</h2>
@@ -58,11 +59,16 @@ const CustomerEdit = ({ handleSubmit, submitting, onBack }) => {
 					/>
 				</div>
 				<CustomersActions>
-					<button type="submit" disabled={submitting}>
+					<button type="submit" disabled={pristine || submitting}>
 						Aceptar
 					</button>
-					<button onClick={onBack}>Cancelar</button>
+					<button type="button" disabled={submitting} onClick={onBack}>
+						Cancelar
+					</button>
 				</CustomersActions>
+				{/* Cuando se halla modificado un cambio en los fields pristine nos informa */}
+				{/* submitSucceeded, nos aseguramos que no se realice cuando se envíe correctamente el formulario */}
+				<Prompt when={!pristine && !submitSucceeded} message="Se perderán los cambios!" />
 			</form>
 		</div>
 	);
@@ -74,7 +80,9 @@ CustomerEdit.propTypes = {
 	age: PropTypes.number,
 	handleSubmit: PropTypes.func,
 	submitting: PropTypes.bool,
-	onBack: PropTypes.func.isRequired
+	onBack: PropTypes.func.isRequired,
+	pristine: PropTypes.bool.isRequired,
+	submitSucceeded: PropTypes.bool.isRequired
 };
 
 const CustomerEditForm = reduxForm({ form: "CustomerEdit", validate })(CustomerEdit);
