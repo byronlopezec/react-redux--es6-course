@@ -4,6 +4,7 @@ import { PropTypes } from "prop-types";
 import { setPropsAsInitial } from "../helps/setPropsAsInitial";
 import CustomersActions from "../components/CustomersActions";
 import { Prompt } from "react-router-dom";
+
 //meta.touched: propiedad de Field que indica si un componente ha sido tocado por el usuario
 const MyField = ({ input, meta, type, label, name }) => (
 	<div>
@@ -17,15 +18,13 @@ const MyField = ({ input, meta, type, label, name }) => (
 	</div>
 );
 
+const isNumber = (value) => ( isNaN(Number(value)) && "El campo debe ser un número");
+
 const validate = (values) => {
 	const error = {};
 
 	if (!values.name) error.name = "El campo Nombre es requerido!";
 	if (!values.dni) error.dni = "El campo Cédula es requerido!";
-	if (!values.age) error.age = "El campo Edad es requerido!";
-	if (isNaN(Number(values.age))) {
-		error.age = "El campo debe ser un numero";
-	}
 
 	return error;
 };
@@ -34,8 +33,7 @@ const toNumber = (values) => values && Number(values);
 const toUpper = (values) => values && values.toUpperCase();
 const toLower = (values) => values && values.toLowerCase();
 const onlyGrow = (value, previousValue) =>
-	// eslint-disable-next-line no-console
-	value && previousValue && value > 18 ? value : previousValue;
+	value && (!previousValue ? value : (value > 18 ? value : previousValue));
 
 const CustomerEdit = ({ handleSubmit, submitting, onBack, submitSucceeded, pristine }) => {
 	return (
@@ -53,6 +51,7 @@ const CustomerEdit = ({ handleSubmit, submitting, onBack, submitSucceeded, prist
 						name="age"
 						type="number"
 						component={MyField}
+						validate={isNumber}
 						parse={toNumber}
 						label="Edad"
 						normalize={onlyGrow}
