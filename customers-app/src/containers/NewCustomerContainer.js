@@ -4,11 +4,22 @@ import CustomerEdit from "../components/CustomerEdit";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { insertCustomer } from "../actions/insertCustomer";
+import { SubmissionError } from "redux-form";
 
 class NewCustomerContainer extends Component {
-	handleSubmit = () => { };
+	handleSubmit = (values) => {
+		values.id = values.dni;
+		return this.props.insertCustomer(values).then((r) => {
+			if (r.error) {
+				throw new SubmissionError(r.payload);
+			}
+		});
+	};
 
-	handleOnSubmitSuccess = () => { };
+	handleOnSubmitSuccess = () => {
+		this.props.history.goBack();
+	};
 
 	handleOnBack = () => {
 		this.props.history.goBack();
@@ -33,7 +44,20 @@ class NewCustomerContainer extends Component {
 }
 
 NewCustomerContainer.propTypes = {
-	history: PropTypes.object.isRequired
+	history: PropTypes.object.isRequired,
+	insertCustomer: PropTypes.func.isRequired
 };
 
-export default withRouter(connect(null,null)( NewCustomerContainer));
+// eslint-disable-next-line no-unused-vars
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = {
+	insertCustomer
+};
+
+export default withRouter(
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	)(NewCustomerContainer)
+);

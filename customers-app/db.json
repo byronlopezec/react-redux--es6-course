@@ -10,7 +10,7 @@
     {
       "dni": "1234567897",
       "name": "BYRON LOPEZ",
-      "age": 21,
+      "age": 26,
       "id": "1234567897"
     },
     {
@@ -34,7 +34,7 @@
     {
       "id": "1702216871",
       "dni": "1702216871",
-      "name": "Maria Idalgo",
+      "name": "MARIA IDALGO",
       "age": 32
     },
     {
@@ -48,6 +48,12 @@
       "dni": "1234567890",
       "name": "David Yanez",
       "age": 24
+    },
+    {
+      "name": "BRANDOM LEE",
+      "dni": "1707215160",
+      "age": 20,
+      "id": "1707215160"
     }
   ],
   "posts": [

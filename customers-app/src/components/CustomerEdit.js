@@ -33,7 +33,7 @@ const toNumber = (values) => values && Number(values);
 const toUpper = (values) => values && values.toUpperCase();
 const toLower = (values) => values && values.toLowerCase();
 const onlyGrow = (value, previousValue) =>
-	value && (!previousValue ? value : (value > 18 ? value : previousValue));
+	value && (!previousValue ? value : (value > 18 ? Number(value) : Number(previousValue)));
 
 const CustomerEdit = ({ handleSubmit, submitting, onBack, submitSucceeded, pristine }) => {
 	return (

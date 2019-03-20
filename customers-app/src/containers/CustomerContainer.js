@@ -12,14 +12,14 @@ import { SubmissionError } from "redux-form";
 
 class CustomerContainer extends Component {
 	static propTypes = {
-		dni: PropTypes.string.isRequired,
-		customer: PropTypes.object,
 		fetchCustomers: PropTypes.func.isRequired,
-		updateCustomer: PropTypes.func
+		updateCustomer: PropTypes.func,
+		dni: PropTypes.string.isRequired,
+		customer: PropTypes.object
 	};
 
 	componentDidMount() {
-		if (this.props.custome === undefined) {
+		if (!this.props.customer) {
 			this.props.fetchCustomers();
 		}
 	}
