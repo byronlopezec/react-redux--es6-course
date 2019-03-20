@@ -8,6 +8,7 @@ import { insertCustomer } from "../actions/insertCustomer";
 import { SubmissionError } from "redux-form";
 
 class NewCustomerContainer extends Component {
+
 	handleSubmit = (values) => {
 		values.id = values.dni;
 		return this.props.insertCustomer(values).then((r) => {
