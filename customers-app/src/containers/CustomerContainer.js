@@ -39,25 +39,33 @@ class CustomerContainer extends Component {
 
 	handleSubmitSuccess = () => this.props.history.goBack();
 
+	renderCustomerControl = (isEdit, isDelete) => {
+		if (this.props.customer) {
+			let CustomerControl = isEdit ? CustomerEdit : CustomerData;
+			//InitialValues es un propiedad de redux-form
+			return (
+				<CustomerControl
+					{...this.props.customer}
+					onSubmit={this.handleSubmit}
+					onSubmitSuccess={this.handleSubmitSuccess}
+					onBack={this.handleOnBack}
+				/>
+			);
+		}
+		return null;
+	};
 	renderBody = () => (
 		<Route
 			path="/customers/:cedula/edit"
 			// eslint-disable-next-line react/no-children-prop
-			children={({ match }) => {
-				if (this.props.customer) {
-					let CustomerControl = match ? CustomerEdit : CustomerData;
-					//InitialValues es un propiedad de redux-form
-					return (
-						<CustomerControl
-							{...this.props.customer}
-							onSubmit={this.handleSubmit}
-							onSubmitSuccess={this.handleSubmitSuccess}
-							onBack={this.handleOnBack}
-						/>
-					);
-				}
-				return null;
-			}}
+			children={({ match: isEdit }) => (
+				// match:isEdit creo un Alias
+				<Route
+					path="/customers/:cedula/edit"
+					// eslint-disable-next-line react/no-children-prop
+					children={({ match: isDelete }) => this.renderCustomerControl(isEdit, isDelete)}
+				/>
+			)}
 		/>
 	);
 
