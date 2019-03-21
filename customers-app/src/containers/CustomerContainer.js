@@ -8,6 +8,7 @@ import CustomerEdit from "../components/CustomerEdit";
 import CustomerData from "../components/CustomerData";
 import { fetchCustomers } from "../actions/fetchCustomers";
 import { updateCustomer } from "../actions/updateCustomer";
+import { deleteCustomer } from "../actions/deleteCustomer";
 import { SubmissionError } from "redux-form";
 
 class CustomerContainer extends Component {
@@ -39,6 +40,8 @@ class CustomerContainer extends Component {
 
 	handleSubmitSuccess = () => this.props.history.goBack();
 
+	handleOnDelete = () => this.props.deleteCustomer("05324578");
+
 	renderCustomerControl = (isEdit, isDelete) => {
 		if (this.props.customer) {
 			let CustomerControl = isEdit ? CustomerEdit : CustomerData;
@@ -51,6 +54,7 @@ class CustomerContainer extends Component {
 					onBack={this.handleOnBack}
 					// isDelete=Null => !isDelete=True => !!isDelete=False Real
 					isDeleteAllowed={!!isDelete}
+					onDelete={this.handleOnDelete}
 				/>
 			);
 		}
@@ -86,7 +90,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {
 	fetchCustomers,
-	updateCustomer
+	updateCustomer,
+	deleteCustomer
 };
 
 export default withRouter(
