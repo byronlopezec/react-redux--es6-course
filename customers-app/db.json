@@ -8,12 +8,6 @@
   },
   "customers": [
     {
-      "dni": "1234567897",
-      "name": "BYRON LOPEZ",
-      "age": 26,
-      "id": "1234567897"
-    },
-    {
       "id": "1722450779",
       "dni": "1722450779",
       "name": "ERIKA SANCHEZ",
@@ -36,18 +30,6 @@
       "dni": "1702216871",
       "name": "MARIA IDALGO",
       "age": 32
-    },
-    {
-      "id": "1702216872",
-      "dni": "1702216872",
-      "name": "Jose Flores",
-      "age": 17
-    },
-    {
-      "id": "1234567890",
-      "dni": "1234567890",
-      "name": "David Yanez",
-      "age": 24
     },
     {
       "name": "BRANDOM LEE",

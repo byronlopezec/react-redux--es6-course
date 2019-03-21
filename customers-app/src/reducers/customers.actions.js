@@ -1,12 +1,13 @@
 // Me permite manejar los reducers
 import { handleActions } from "redux-actions";
-import { FETCH_CUSTOMERS, INSERT_CUSTOMERS, UPDATE_CUSTOMERS } from "../constants";
+import { FETCH_CUSTOMERS, INSERT_CUSTOMERS, UPDATE_CUSTOMERS, DELETE_CUSTOMERS } from "../constants";
 
 // export const customers = handleActions(FETCH_CUSTOMERS, (state) => state);
 export const customers = handleActions(
 	{
 		[FETCH_CUSTOMERS]: (state, actions) => [...actions.payload],
 		[INSERT_CUSTOMERS]: (state, actions) => [...state, actions.payload],
+		[DELETE_CUSTOMERS]: (state, actions) => [...state.filter((c) => c.id !== actions.payload)],
 		[UPDATE_CUSTOMERS]: (state, actions) => {
 			const customerPayload = actions.payload;
 			const customerList = state;
