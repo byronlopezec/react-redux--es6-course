@@ -4,6 +4,8 @@ import { PropTypes } from "prop-types";
 import { setPropsAsInitial } from "../helps/setPropsAsInitial";
 import CustomersActions from "../components/CustomersActions";
 import { Prompt } from "react-router-dom";
+import { accessControl } from "../helps/accessControl";
+import { CUSTOMER_EDIT } from "../constants/permissions";
 
 const validate = (values) => {
 	const error = {};
@@ -107,4 +109,4 @@ const CustomerEditForm = reduxForm({ form: "CustomerEdit", validate })(CustomerE
 // });
 // export default connect(mapStateToProps)(CustomerEditForm);
 
-export default setPropsAsInitial(CustomerEditForm);
+export default accessControl([CUSTOMER_EDIT])(setPropsAsInitial(CustomerEditForm)) ;

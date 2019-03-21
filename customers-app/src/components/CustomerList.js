@@ -8,6 +8,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import { withStyles } from "@material-ui/core/styles";
 import CustomerListItem from "./CustomerListItem";
+import { accessControl } from "../helps/accessControl";
+import { CUSTOMER_LIST } from "../constants/permissions";
 
 const CustomerList = ({ customers, urlPath }) => {
 	return (
@@ -75,4 +77,4 @@ const styles = (theme) => ({
 	}
 });
 
-export default withStyles(styles)(CustomerList);
+export default accessControl([CUSTOMER_LIST])(withStyles(styles)(CustomerList));
