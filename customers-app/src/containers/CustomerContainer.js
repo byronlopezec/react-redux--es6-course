@@ -49,6 +49,8 @@ class CustomerContainer extends Component {
 					onSubmit={this.handleSubmit}
 					onSubmitSuccess={this.handleSubmitSuccess}
 					onBack={this.handleOnBack}
+					// isDelete=Null => !isDelete=True => !!isDelete=False Real
+					isDeleteAllowed={!!isDelete}
 				/>
 			);
 		}
@@ -59,9 +61,9 @@ class CustomerContainer extends Component {
 			path="/customers/:cedula/edit"
 			// eslint-disable-next-line react/no-children-prop
 			children={({ match: isEdit }) => (
-				// match:isEdit creo un Alias
+				// match:isEdit creo un Alias al match
 				<Route
-					path="/customers/:cedula/edit"
+					path="/customers/:cedula/delete"
 					// eslint-disable-next-line react/no-children-prop
 					children={({ match: isDelete }) => this.renderCustomerControl(isEdit, isDelete)}
 				/>
