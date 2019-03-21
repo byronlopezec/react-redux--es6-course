@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { PropTypes } from "prop-types";
 import { setPropsAsInitial } from "../helps/setPropsAsInitial";
@@ -18,8 +18,6 @@ const MyField = ({ input, meta, type, label, name }) => (
 	</div>
 );
 
-const isNumber = (value) => ( isNaN(Number(value)) && "El campo debe ser un número");
-
 const validate = (values) => {
 	const error = {};
 
@@ -29,50 +27,61 @@ const validate = (values) => {
 	return error;
 };
 
+const isNumber = (value) => isNaN(Number(value)) && "El campo debe ser un número";
 const toNumber = (values) => values && Number(values);
 const toUpper = (values) => values && values.toUpperCase();
 const toLower = (values) => values && values.toLowerCase();
 const onlyGrow = (value, previousValue) =>
-	value && (!previousValue ? value : (value > 18 ? Number(value) : Number(previousValue)));
+	value && (!previousValue ? value : value > 18 ? Number(value) : Number(previousValue));
 
-const CustomerEdit = ({ handleSubmit, submitting, onBack, submitSucceeded, pristine }) => {
-	return (
-		<div>
-			<h2>Editar cliente</h2>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<Field name="name" component={MyField} label="Nombre" parse={toUpper} format={toLower} />
-				</div>
-				<div>
-					<Field name="dni" component={MyField} label="Cédula" />
-				</div>
-				<div>
-					<Field
-						name="age"
-						type="number"
-						component={MyField}
-						validate={isNumber}
-						parse={toNumber}
-						label="Edad"
-						normalize={onlyGrow}
-					/>
-				</div>
-				<CustomersActions>
-					<button type="submit" disabled={pristine || submitting}>
-						Aceptar
-					</button>
-					<button type="button" disabled={submitting} onClick={onBack}>
-						Cancelar
-					</button>
-				</CustomersActions>
-				{/* Cuando se halla modificado un cambio en los fields pristine nos informa */}
-				{/* submitSucceeded, nos aseguramos que no se realice cuando se envíe correctamente el formulario */}
-				<Prompt when={!pristine && !submitSucceeded} message="Se perderán los cambios!" />
-			</form>
-		</div>
-	);
-};
+class CustomerEdit extends Component {
+	componentDidMount() {
+		if (this.cuadroFoco) {
+			this.cuadroFoco.focus();
+		}
+	}
 
+	render() {
+		const { handleSubmit, submitting, onBack, submitSucceeded, pristine } = this.props;
+
+		return (
+			<div>
+				<h2>Editar cliente</h2>
+				Ejemplo Foco texto: <input ref={(txt) => (this.cuadroFoco = txt)} type="text" />
+				<form onSubmit={handleSubmit}>
+					<div>
+						<Field name="name" component={MyField} label="Nombre" parse={toUpper} format={toLower} />
+					</div>
+					<div>
+						<Field name="dni" component={MyField} label="Cédula" />
+					</div>
+					<div>
+						<Field
+							name="age"
+							type="number"
+							component={MyField}
+							validate={isNumber}
+							parse={toNumber}
+							label="Edad"
+							normalize={onlyGrow}
+						/>
+					</div>
+					<CustomersActions>
+						<button type="submit" disabled={pristine || submitting}>
+							Aceptar
+						</button>
+						<button type="button" disabled={submitting} onClick={onBack}>
+							Cancelar
+						</button>
+					</CustomersActions>
+					{/* Cuando se halla modificado un cambio en los fields pristine nos informa */}
+					{/* submitSucceeded, asegura que no se realice cuando se envíe correctamente el formulario */}
+					<Prompt when={!pristine && !submitSucceeded} message="Se perderán los cambios!" />
+				</form>
+			</div>
+		);
+	}
+}
 CustomerEdit.propTypes = {
 	name: PropTypes.string,
 	dni: PropTypes.string,
