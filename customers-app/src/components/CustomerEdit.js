@@ -5,19 +5,6 @@ import { setPropsAsInitial } from "../helps/setPropsAsInitial";
 import CustomersActions from "../components/CustomersActions";
 import { Prompt } from "react-router-dom";
 
-//meta.touched: propiedad de Field que indica si un componente ha sido tocado por el usuario
-const MyField = ({ input, meta, type, label, name }) => (
-	<div>
-		<label htmlFor={name}>{label} </label>
-		<input {...input} type={!type ? "text" : type} />
-		{meta.touched && meta.error && (
-			<span>
-				<br /> {meta.error}
-			</span>
-		)}
-	</div>
-);
-
 const validate = (values) => {
 	const error = {};
 
@@ -35,11 +22,24 @@ const onlyGrow = (value, previousValue) =>
 	value && (!previousValue ? value : value > 18 ? Number(value) : Number(previousValue));
 
 class CustomerEdit extends Component {
+	//NO UTILIZAR COMPONENTES NO CONTROLADOS DE FORMA GENERAL!!!
 	componentDidMount() {
 		if (this.cuadroFoco) {
 			this.cuadroFoco.focus();
 		}
 	}
+	//meta.touched: propiedad de Field que indica si un componente ha sido tocado por el usuario
+	renderField = ({ input, meta, type, label, name, withFocu }) => (
+		<div>
+			<label htmlFor={name}>{label} </label>
+			<input {...input} type={!type ? "text" : type} ref={withFocu && ((txt) => (this.cuadroFoco = txt))} />
+			{meta.touched && meta.error && (
+				<span>
+					<br /> {meta.error}
+				</span>
+			)}
+		</div>
+	);
 
 	render() {
 		const { handleSubmit, submitting, onBack, submitSucceeded, pristine } = this.props;
@@ -47,19 +47,25 @@ class CustomerEdit extends Component {
 		return (
 			<div>
 				<h2>Editar cliente</h2>
-				Ejemplo Foco texto: <input ref={(txt) => (this.cuadroFoco = txt)} type="text" />
 				<form onSubmit={handleSubmit}>
 					<div>
-						<Field name="name" component={MyField} label="Nombre" parse={toUpper} format={toLower} />
+						<Field
+							withFocu={true} // o simplemente withFocu
+							name="name"
+							component={this.renderField}
+							label="Nombre"
+							parse={toUpper}
+							format={toLower}
+						/>
 					</div>
 					<div>
-						<Field name="dni" component={MyField} label="Cédula" />
+						<Field name="dni" component={this.renderField} label="Cédula" />
 					</div>
 					<div>
 						<Field
 							name="age"
 							type="number"
-							component={MyField}
+							component={this.renderField}
 							validate={isNumber}
 							parse={toNumber}
 							label="Edad"
