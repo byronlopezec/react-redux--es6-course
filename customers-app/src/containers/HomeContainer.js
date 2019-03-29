@@ -12,7 +12,6 @@ class HomeContainer extends Component {
 
 	handleOnClick = () => {
 		// eslint-disable-next-line no-console
-		console.log("HandleOnClick");
 		this.props.history.push("/customers");
 	};
 

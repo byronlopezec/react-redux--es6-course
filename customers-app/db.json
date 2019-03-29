@@ -8,20 +8,6 @@
   },
   "customers": [
     {
-      "id": "1722450779",
-      "dni": "1722450779",
-      "name": "ERIKA SANCHEZ",
-      "age": 28,
-      "isDeleteAllowed": false,
-      "user": {
-        "permissions": [
-          "CUSTOMER_LIST",
-          "CUSTOMER_VIEW",
-          "CUSTOMER_EDIT"
-        ]
-      }
-    },
-    {
       "id": "1702216876",
       "dni": "1702216876",
       "name": "SANTIAGO PROANIO",

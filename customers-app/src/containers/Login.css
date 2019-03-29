@@ -1,0 +1,15 @@
+.Login {
+	display: flex;
+	justify-content: center;
+	min-height: "23rem";
+}
+
+.Login .Card {
+	border: 5px, solid, dodgerblue;
+	width: 20rem;
+}
+
+.Login .Card .Button-submit {
+	justify-content: "center";
+	width: 100%
+}
