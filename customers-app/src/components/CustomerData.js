@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CustomersActions from "./CustomersActions";
-import { CUSTOMER_VIEW } from "../constants/permissions";
+import { CUSTOMER_VIEW } from "../constants/users";
 import { accessControl } from "../helps/accessControl";
 
 const CustomerData = ({ id, name, dni, age, onBack, onDelete, isDeleteAllowed }) => {

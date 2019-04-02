@@ -15,8 +15,10 @@ class CustomerContainer extends Component {
 	static propTypes = {
 		fetchCustomers: PropTypes.func.isRequired,
 		updateCustomer: PropTypes.func,
+		deleteCustomer: PropTypes.func,
 		dni: PropTypes.string.isRequired,
-		customer: PropTypes.object
+		customer: PropTypes.object,
+		history: PropTypes.object
 	};
 
 	componentDidMount() {

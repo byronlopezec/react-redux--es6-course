@@ -9,7 +9,7 @@ import TableCell from "@material-ui/core/TableCell";
 import { withStyles } from "@material-ui/core/styles";
 import CustomerListItem from "./CustomerListItem";
 import { accessControl } from "../helps/accessControl";
-import { CUSTOMER_LIST } from "../constants/permissions";
+import { CUSTOMER_LIST } from "../constants/users";
 
 const CustomerList = ({ customers, urlPath }) => {
 	return (

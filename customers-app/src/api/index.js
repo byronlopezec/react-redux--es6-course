@@ -1,4 +1,9 @@
 //Funcion que rotarna otra función
+export const apiGetUser = (url, email) => () =>
+	fetch(`${url}?email=${email}`).then((v) => {
+		return v.json();
+	});
+
 export const apiGet = (url) => () => fetch(url).then((v) => v.json());
 
 export const apiPut = (url, id, obj) => () =>

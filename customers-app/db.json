@@ -6,13 +6,20 @@
     "readme": "Put,Push,Delete need id",
     "node json-server": "node json-server.js"
   },
-  "customers": [
+  "users": [
     {
-      "id": "1702216876",
-      "dni": "1702216876",
-      "name": "SANTIAGO PROANIO",
-      "age": 24
-    },
+      "id": "1000A",
+      "email": "buhobit@gmail.com",
+      "password": "123456",
+      "session_token": "xc54sdfr87rwg66jk7o4h23a5r7y9ff4g7h55fg4ff104",
+      "permissions": [
+        "CUSTOMER_LIST",
+        "CUSTOMER_VIEW",
+        "CUSTOMER_EDIT"
+      ]
+    }
+  ],
+  "customers": [
     {
       "id": "0532659877",
       "dni": "0532659877",
@@ -30,6 +37,22 @@
       "dni": "1707215160",
       "age": 20,
       "id": "1707215160"
+    },
+    {
+      "user": {
+        "id": "1000A",
+        "email": "buhobit@gmail.com",
+        "session_token": "xc54sdfr87rwg66jk7o4h23a5r7y9ff4g7h55fg4ff104",
+        "permissions": [
+          "CUSTOMER_LIST",
+          "CUSTOMER_VIEW",
+          "CUSTOMER_EDIT"
+        ]
+      },
+      "name": "BUHOBIT",
+      "dni": "1234567897",
+      "age": 19,
+      "id": "1234567897"
     }
   ],
   "posts": [

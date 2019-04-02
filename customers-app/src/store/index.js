@@ -5,4 +5,5 @@ import reducers from "../reducers";
 //Instalacion plugin Redux para Chrome
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 //retrasa la resolucion de la promise hasta que el promise devuelva una respuesta y ahi ejecut la accion.
-export const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(promiseMiddleware)));
+const initialState = {};
+export const store = createStore(reducers, initialState, composeEnhancers(applyMiddleware(promiseMiddleware)));

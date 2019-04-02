@@ -5,9 +5,10 @@ export const accessControl = (permissionsRequired) => (WrappepComponent) => {
 	// eslint-disable-next-line react/display-name
 	const SecuredControl = class extends Component {
 		render() {
+			// eslint-disable-next-line react/prop-types
 			const { permissions } = this.props.user;
 
-			const isAllow = permissionsRequired.every((p) => permissions.indexOf(p) >= 0);
+			const isAllow = permissionsRequired.every((p) => permissions && permissions.indexOf(p) >= 0);
 
 			if (!isAllow) {
 				return (
