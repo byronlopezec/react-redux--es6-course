@@ -13,8 +13,17 @@ import { CUSTOMER_LIST } from "../constants/users";
 
 const CustomerList = ({ customers, urlPath }) => {
 	return (
-		<div>
-			<Paper className="customer-list-paper">
+		<div className="customerlist">
+			<Paper
+				className="customer-list-paper"
+				style={{
+					marginLeft: "5%",
+					marginRight: "5%",
+					WebkitBoxShadow: "10px 10px 25px -1px rgba(0, 0, 0, 0.95)",
+					MozBoxShadow: "10px 10px 25px -1px rgba(0, 0, 0, 0.95)",
+					boxShadow: "10px 10px 25px -1px rgba(0, 0, 0, 0.95)"
+				}}
+			>
 				<Table className="customer-list-table">
 					<TableHead>
 						<TableRow>
@@ -68,7 +77,7 @@ const styles = (theme) => ({
 		overflowX: "auto"
 	},
 	table: {
-		minWidth: 700
+		minWidth: 500
 	},
 	row: {
 		"&:nth-of-type(odd)": {

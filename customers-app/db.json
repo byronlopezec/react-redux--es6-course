@@ -21,16 +21,17 @@
   ],
   "customers": [
     {
-      "id": "0532659877",
-      "dni": "0532659877",
-      "name": "JUAN VERA",
-      "age": 18
-    },
-    {
       "id": "1702216871",
       "dni": "1702216871",
       "name": "MARIA IDALGO",
-      "age": 32
+      "age": 19,
+      "isDeleteAllowed": false,
+      "classes": {
+        "button": "NewComponente-button-177 NewComponente-button-1",
+        "leftIcon": "NewComponente-leftIcon-178 NewComponente-leftIcon-2",
+        "rightIcon": "NewComponente-rightIcon-179 NewComponente-rightIcon-3",
+        "iconSmall": "NewComponente-iconSmall-180 NewComponente-iconSmall-4"
+      }
     },
     {
       "name": "BRANDOM LEE",
@@ -51,8 +52,22 @@
       },
       "name": "BUHOBIT",
       "dni": "1234567897",
+      "age": 23,
+      "id": "1234567897",
+      "isDeleteAllowed": false
+    },
+    {
+      "name": "BRANDOM",
+      "dni": "1326459870",
       "age": 19,
-      "id": "1234567897"
+      "id": "132645",
+      "isDeleteAllowed": false
+    },
+    {
+      "name": "BYRON LOPEZ",
+      "dni": "1707245878",
+      "age": 22,
+      "id": "1707245878"
     }
   ],
   "posts": [

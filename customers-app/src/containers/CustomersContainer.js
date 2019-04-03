@@ -26,7 +26,7 @@ class CustomersContainer extends Component {
 
 	renderBody = (customers) => {
 		return (
-			<div>
+			<div className="customers-container">
 				<CustomersActions>
 					<Button
 						variant="contained"
