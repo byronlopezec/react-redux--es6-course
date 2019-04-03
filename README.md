@@ -13,7 +13,7 @@ npm start
 ```
 ### Levantar el servidor json-server para Customers-App:
 ```
-json-server watch db.json --port 4000
+json-server --watch db.json --port 4000
 ```
 ## 🛠️ Herramientas usadas
 
