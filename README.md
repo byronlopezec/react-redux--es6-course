@@ -1,5 +1,5 @@
 # Customers APP y Clima App
-_Este proyecto es un ejemplo básico de las bodades que proporciona la librería ReactJS de Facebook y el contenedor de estados Redux creado por Dan Abramov_
+_Este proyecto es un ejemplo básico de REACTJS y REDUX_
 ## 🚀 Comenzando
 Dirigirse a las ramas customers-app o redux-climaApp
 ### Descargar packetes json:
